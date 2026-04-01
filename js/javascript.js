@@ -6,9 +6,14 @@
 
 
 
-
-
-
+   // ============================
+  //   MOVIMENTO BANNER PRINCIPAL
+  // =============================
+ new bootstrap.Carousel('#heroCarousel', {
+    interval: 4000,
+    ride: 'carousel',
+    pause: false
+  });
 
 
 
