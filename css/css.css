@@ -1,0 +1,253 @@
+
+
+
+
+/* ===== RESET LEVE ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Merienda', cursive;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+
+/* =====######### LOGO ########===== */
+.logo-marca,
+.logo-footer {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  text-decoration: none;
+}
+
+.logo-marca,
+.logo-footer {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.logo-marca:hover,
+.logo-footer:hover {
+  transform: translateY(-3px);
+  color: orange;
+}
+
+
+
+/* =====######### NAVBAR ########===== */
+/* LINK DA NAVBAR */
+.navbar .nav-link {
+  display: inline-block; /* necessário pro transform funcionar bem */
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+  border-radius: 100px;
+  padding: 6px 10px;
+}
+
+/* 🔥 HOVER PROFISSIONAL */
+.navbar .nav-link:hover {
+  color: #ffc107;
+
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow: 0 6px 15px rgba(219, 214, 214, 0.25);
+}
+
+
+
+/* =====##### DROPDOWN-MENU ####===== */
+.dropdown-menu {
+  border-radius: 100px;
+  width: 150px;
+}
+
+/* ITEM PADRÃO */
+.dropdown-item {
+  transition: 
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease,
+    padding-left 0.2s ease;
+}
+
+/* 🔥 HOVER PREMIUM */
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #000, #1c1c1c);
+  color: #ffc107;
+  border-radius: 100px;
+  width: 140px;
+  
+  transform: translateX(5px);
+  padding-left: 18px;
+}
+
+/* ÍCONE ANIMADO */
+.dropdown-item i {
+  transition: 0.25s ease;
+}
+
+/* ÍCONE NO HOVER */
+.dropdown-item:hover i {
+  transform: scale(1.2) rotate(10deg);
+  color: #ffc107;
+}
+
+
+
+/* =====##### FOOTER ####===== */
+.footer {
+  border-top: 1px solid rgba(155, 0, 0, 0.1);
+}
+
+/* ===== REDES SOCIAIS ===== */
+.social-icon {
+  font-size: 1.5rem;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: #ffc107;
+  transform: scale(1.2);
+}
+
+/*========= PARCEIROS FOOTER ==========*/
+.parceiro {
+  background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+
+  transition: all 0.25s ease;
+}
+
+/* ÍCONE */
+.parceiro i {
+  font-size: 0.9rem;
+}
+
+/* HOVER */
+.parceiro:hover {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  color: #000;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.35);
+}
+/* ===== TEXTO ===== */
+.text-muted {
+  color: #f8f6f3 !important;
+}
+
+
+/* ===============BOTÃO WHATSAPP=============== */
+/* BOTÃO WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+
+  width: 40px;
+  height: 40px;
+
+  background: #25D366;
+  color: #fff;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+
+  transition: 0.3s ease;
+
+  /* 🔥 ANIMAÇÃO */
+  animation: pulse 2s infinite;
+}
+
+/* 🔥 HOVER */
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* 💥 ANIMAÇÃO PULSAR */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+
+/* ===============BOTÃO VOLTA PARA TOPO=============== */
+.btn-topo {
+  position: fixed;
+  bottom: 20px;
+
+  left: 20px;   /* 🔥 muda aqui */
+  right: auto;  /* garante que não conflita */
+
+  z-index: 999;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* MOSTRAR */
+.btn-topo.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 🔥 HOVER */
+.btn-topo:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* 📱 RESPONSIVO */
+@media (max-width: 576px) {
+  .btn-topo {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
