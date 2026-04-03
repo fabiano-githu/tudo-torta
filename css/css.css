@@ -59,8 +59,10 @@ body {
 
 /* =====##### DROPDOWN-MENU ####===== */
 .dropdown-menu {
-  border-radius: 100px;
-  width: 150px;
+  background-color: #ffc107;
+  border-radius: 20px;
+  width: 200px;
+  height: 110PX;
 }
 
 /* ITEM PADRÃO */
@@ -93,6 +95,227 @@ body {
   transform: scale(1.2) rotate(10deg);
   color: #ffc107;
 }
+
+
+
+
+
+/* =====##### SEÇÃO CARDS TORTA SALGADA ####===== */
+/* Card base */
+
+.body-torta {
+  height: 600px;
+
+}
+
+.torta-card {
+  width: 430px;
+  height: 520px;
+  background-color: #1c1c1c;
+  border: 3px solid #ffc107;        /* borda amarela */
+  border-radius: 20px;               /* bordas arredondadas */
+  box-shadow: 0 20px 60px rgba(255,193,7,0.3); /* sombra inicial */
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+/* Hover animado */
+.torta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 60px rgba(255,193,7,0.5); /* sombra maior */
+  border-color: #ffd633;                       /* borda mais viva */
+}
+
+/* Imagem do card */
+.torta-card .card-img-top {
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Card com borda e sombra padrão */
+.custom-shadow-card {
+  border: 3px solid #ffc107; /* borda amarela */
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(255, 193, 7, 0.3); /* sombra amarela suave */
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+/* Hover animado */
+.custom-shadow-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(255, 193, 7, 0.5); /* sombra maior e mais intensa */
+  border-color: #ffd633; /* borda mais clara/amarela viva */
+}
+
+#container-tortas .btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   Modal - Torta Salgada
+   =============================== */
+
+
+#modalTorta{
+  height: 800px;
+  border-radius: 20px;
+}
+
+#modalTorta .modal-dialog {
+  max-width: 1000px; 
+  max-height: 900px;       /* largura do modal */
+  margin: 1.75rem auto;
+}
+
+#modalTorta .modal-content {
+  border-radius: 15px;
+  background-color: #1a1a1a; /* fundo escuro */
+  border: 1px solid #ffc107; /* borda amarela */
+  box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4); /* sombra inicial */
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Efeito hover ao passar mouse sobre modal */
+#modalTorta .modal-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px rgba(255, 193, 7, 0.6); /* sombra maior */
+  border-color: #ffd633; /* borda mais viva */
+}
+
+/* Cabeçalho */
+#modalTorta .modal-header {
+  border-bottom: none; /* remove linha padrão */
+  justify-content: center;
+  text-align: center;
+}
+
+/* Título do modal */
+#modalTorta .modal-title {
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Botão de fechar */
+#modalTorta .btn-close {
+ background-color: greenyellow;
+  filter: brightness(2); /* deixa branco/brilhante */
+}
+
+/* Corpo do modal */
+#modalTorta .modal-body {
+  height: 650px;
+  text-align: center;
+  padding: 1.5rem;
+}
+.img-modal {
+  max-height: 1300px;        /* altura máxima */
+  width: auto;              /* mantém proporção */
+  border-radius: 15px;      /* cantos arredondados */
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.5); /* sombra amarela */
+  transition: transform 0.3s, box-shadow 0.3s;    /* animação suave */
+}
+
+/* Efeito hover na imagem */
+#modalImg:hover {
+  transform: scale(1.05); /* aumenta levemente */
+  box-shadow: 5px 5px rgba(255, 193, 7, 0.7); /* sombra mais intensa */
+}
+
+/* Descrição */
+#modalTorta .modal-body p {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Preço */
+#modalTorta .modal-body h4 {
+  color: #ffc107;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Botões dentro do modal */
+#modalTorta .btn {
+  margin: 0.25rem;
+  min-width: 130px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover nos botões */
+#modalTorta .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsividade (mobile) */
+@media (max-width: 768px) {
+  #container-tortas .card-img-top {
+    height: 180px;
+  }
+  #container-tortas .card-title {
+    font-size: 1.1rem;
+  }
+  #container-tortas h4 {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+
+
+.anim-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #25D366; /* verde WhatsApp */
+}
+
+.icone-zap {
+  font-size: 2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Ícone reage no hover */
+.anim-text:hover .icone-zap {
+  transform: scale(1.2);
+  color: #128C7E;
+}
+
+/* Texto animado profissional */
+.texto-dinamico {
+  display: inline-block;
+  animation: fadeBounce 2s infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Keyframes da animação */
+@keyframes fadeBounce {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+}
+
+
+
 
 
 
