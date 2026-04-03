@@ -11,6 +11,9 @@ Foi desenvolvida uma estrutura reutilizável de interface com foco em responsivi
 - Efeito underline animado
 - Estrutura pronta para reutilização em múltiplas páginas
 
+
+
+
 ### ✅ Footer
 - Layout organizado em colunas
 - Seção de parceiros com ícones (Bootstrap Icons)
