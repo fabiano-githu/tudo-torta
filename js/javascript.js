@@ -73,6 +73,7 @@ function renderizarCards() {
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card card-custom ">
 
+
           <img src="${produto.imagem}" class="card-img-top">
 
           <div class="card-body d-flex flex-column ">
@@ -115,6 +116,15 @@ function abrirModal(index) {
 
 // INICIAR
 renderizarCards();
+   // ============================
+  //   MOVIMENTO BANNER PRINCIPAL
+  // =============================
+ new bootstrap.Carousel('#heroCarousel', {
+    interval: 4000,
+    ride: 'carousel',
+    pause: false
+  });
+
 
 
 
