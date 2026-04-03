@@ -290,6 +290,24 @@ body {
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
+
+/* hoverbotão do zao na seção torta salgada */
+.btn-whatsapp {
+  background-color: #25D366; /* Verde WhatsApp */
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E; /* Verde mais escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+}
+
 /* Responsividade (mobile) */
 @media (max-width: 768px) {
   #container-tortas .card-img-top {
