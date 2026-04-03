@@ -59,8 +59,9 @@ body {
 
 /* =====##### DROPDOWN-MENU ####===== */
 .dropdown-menu {
-  border-radius: 100px;
-  width: 150px;
+  border-radius: 20px;
+  width: 100px;
+  background-color: #ffc107 ;
 }
 
 /* ITEM PADRÃO */
@@ -74,7 +75,8 @@ body {
 
 /* 🔥 HOVER PREMIUM */
 .dropdown-item:hover {
-  background: linear-gradient(135deg, #000, #1c1c1c);
+  width: 300px;
+  background: linear-gradient(135deg, #0e0d0c, #1c1c1c);
   color: #ffc107;
   border-radius: 100px;
   width: 140px;
