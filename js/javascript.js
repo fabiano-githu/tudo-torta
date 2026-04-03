@@ -80,14 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Inicializa com todos os cards
-document.addEventListener("DOMContentLoaded", () => {
-    renderTortas("todos");
-});
-
-
-
-
 
 
 
