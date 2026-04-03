@@ -1,15 +1,18 @@
 
-  // =========================
-  // 📅 CSS SEÇÃO CARDS TORTA SALGADA
-  // =========================
 
-
+// =========================
+// SEÇÃO TORTA SALGADAS - JS COMPLETO
+// =========================
 // Array de produtos
 const tortas = [
-  { tipo: "retangular", nome: "Torta de Frango", preco: 25.00, descricao: "Torta salgada recheada com frango cremoso\nServe até 6 pessoas", imagem: "img/torta-frango.jpg" },
-  { tipo: "retangular", nome: "Torta de Calabresa", preco: 28.00, descricao: "Recheio de calabresa temperada\nServe até 6 pessoas", imagem: "img/images.jpeg" },
-  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 30.00, descricao: "Torta redonda tradicional\nServe até 8 pessoas", imagem: "img/torta-redonda-frango.jpg" }
-];
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 100.00, descricao: " Cobertura Purê de Batata (20x40cm)\nServe até 10 pessoas", imagem: "img/WhatsApp_Image_2024-01-13_at_15.32.02__1_-removebg-preview.png" },
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 200.00, descricao: "Cobertura Purê de Batata (30x40cm)\nServe até 30 pessoas", imagem: "img/WhatsApp Image 2024-03-24 at 20.37.17 (2).jpeg" },
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 250.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 40 pessoas", imagem: "img/IMG_20230507_081014742.jpg" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 100.00, descricao: " Cobertura Purê de Batata (25cm)\nServe até 12 pessoas", imagem: "img/IMG_20220921_162929284.jpg" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 150.00, descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas", imagem: "img/IMG-20210720-WA0070.jpg" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 180.00, descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas", imagem: "img/WhatsApp Image 2023-10-21 at 17.13.07 (1).jpeg" },
+]
+
 
 // Renderiza cards filtrados
 function renderTortas(tipoSelecionado = "todos") {
@@ -70,6 +73,12 @@ function filtrarTortas(tipo) {
         window.scrollTo({ top: pos, behavior: "smooth" });
     }
 }
+
+// Inicializa com todos os cards
+document.addEventListener("DOMContentLoaded", () => {
+    renderTortas("todos");
+});
+
 
 // Inicializa com todos os cards
 document.addEventListener("DOMContentLoaded", () => {
