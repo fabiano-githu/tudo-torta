@@ -96,6 +96,49 @@ body {
 
 
 
+
+/* =====##### GALERIA DE FOTOS ####===== */
+.galeria-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.galeria-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 193, 7, 0.5); /* warning */
+}
+
+.galeria-card img {
+  object-fit: cover;
+  height: 250px;
+}
+
+.galeria-card .card-body {
+  background-color: #1c1c1c; /* fundo escuro */
+  padding: 0.5rem 1rem;
+}
+
+.galeria-card .btn-whatsapp {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =====##### FOOTER ####===== */
 .footer {
   border-top: 1px solid rgba(155, 0, 0, 0.1);
