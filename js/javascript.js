@@ -118,7 +118,7 @@ function renderizarCards() {
             <h5 class="card-title text-warning text-center">${produto.nome}</h5>
             <p class="card-text text-white text-center">${produto.descricao}</p>
 
-            <h6 class="text-warning mb-3 text-center fs-3">
+            <h6 class="text-warning mb-3 text-center ">
               R$ ${produto.preco.toFixed(2)}
             </h6>
 
