@@ -203,11 +203,13 @@ body {
 
 #modalTorta .modal-dialog {
   max-width: 1000px; 
-  max-height: 900px;       /* largura do modal */
+  max-height: 800px;       /* largura do modal */
   margin: 1.75rem auto;
 }
 
 #modalTorta .modal-content {
+  height: 550px;
+  width: 3500px;
   border-radius: 15px;
   background-color: #1a1a1a; /* fundo escuro */
   border: 1px solid #ffc107; /* borda amarela */
@@ -296,17 +298,11 @@ body {
   background-color: #25D366; /* Verde WhatsApp */
   border: none;
   color: #ffffff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+ 
+  
 }
 
-.btn-whatsapp:hover {
-    background-color: #128C7E; /* Verde mais escuro */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    text-decoration: none;
-}
+
 
 /* Responsividade (mobile) */
 @media (max-width: 768px) {

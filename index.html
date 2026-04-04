@@ -240,19 +240,30 @@
             <div id="container-tortas" class="row g-4"></div>
         </section>
 
-        <!-- Modal reutilizável -->
+        <!-- Modal TORTA -->
         <div class="modal fade" id="modalTorta" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark">
-                <div class="modal-header justify-content-center">
-                    <h5 class="modal-title text-warning fs-2" id="modalTitulo"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalImg" class="img-fluid rounded mb-3" style="max-height:300px;" alt="">
-                    <p id="modalDesc" class="text-white"></p>
-                    <h4 id="modalPreco" class="text-warning"></h4>
-                </div>
+
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title text-warning fs-2" id="modalTituloTorta"></h5>
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal">
+                        </button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img id="modalImgTorta"
+                            class="img-fluid rounded mb-3"
+                            style="max-height:300px;">
+
+                        <p id="modalDescTorta" class="text-white"></p>
+
+                        <h4 id="modalPrecoTorta" class="text-warning"></h4>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -270,8 +281,6 @@
 
 
         <!-- =================############# SEÇÃO CARDS SALGADOS ###########================= -->
-
-
         <h2 id="salgados" class="titulo-animado text-center text-warning mb-0 py-3 fs-1">
             
             🍽️ Nossos Salgados  
@@ -300,36 +309,41 @@
          <div id="cards-container" class="row g-4 text-warning "></div>
         </section>
 
-        <!-- =================############# MODAL ###########================= -->
-        <div class="modal fade " id="modalDetalhe" tabindex="-1">
-         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content text-center ">
+        <!-- =================############# MODAL SALGADOS ###########================= -->
 
-                <div class="modal-header text-warning position-relative">
+        <div class="modal fade" id="modalSalgados" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content text-center">
 
-                    <h5 class="modal-title text-center w-100 fs-1" id="modalTitulo"></h5>
+                    <div class="modal-header text-warning position-relative">
 
-                    <button type="button"
-                        class="btn-close position-absolute end-0 me-3"
-                        data-bs-dismiss="modal">
-                    </button>
+                        <h5 class="modal-title text-center w-100 fs-1" id="modalTituloSalgado"></h5>
+
+                        <button type="button"
+                                class="btn-close position-absolute end-0 me-3"
+                                data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <img id="modalImagemSalgado"
+                            class="img-fluid rounded mb-3">
+
+                        <p id="modalDescricaoSalgado" class="fs-5"></p>
+
+                        <h4 id="modalPrecoSalgado" class="text-warning fs-1"></h4>
+                    </div>
 
                 </div>
-
-
-                <div class="modal-body text-center ">
-                    <img id="modalImagem" class="img-fluid rounded mb-3">
-                    <p id="modalDescricao" class="fs-5"></p>
-                    <h4 id="modalPreco" class=" text-warning fs-1"></h4>
-                </div>
-
             </div>
-         </div>
         </div>
 
 
 
 
+
+        <!-- =================############# SEÇÃO SOBRE ###########================= -->
         <section id="sobre" class="sobre-section py-5">
             <div class="container">
 
@@ -394,20 +408,6 @@
 
             </div>
         </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
