@@ -101,7 +101,7 @@ body {
 
 /* =====##### CSS BANNER PRINCIPAL ####===== */
 .hero-slide {
-  height: 70vh; /* ocupa 100% da altura da tela */
+  height: 90vh; /* ocupa 100% da altura da tela */
     background-size: cover;      /* faz a imagem cobrir tudo */
   background-position: center; /* centraliza */
   background-repeat: no-repeat; /* 🚨 ISSO EVITA DUPLICAR */
