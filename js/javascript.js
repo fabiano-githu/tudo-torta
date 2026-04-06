@@ -3,47 +3,154 @@
 
 
 
-
+// =========================
+// GARANTE QUE O HTML CARREGOU
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
 
 // =========================
-  // JS SEÇÃO GALERIA
-  // =========================
-// Número do WhatsApp
-const numeroWhatsApp = "5521968061820"; // Coloque o seu número
+// CONFIG
+// =========================
+const numeroWhatsApp = "5521968061820";
 
-// Array de fotos da galeria
+// =========================
+// DADOS
+// =========================
 const fotosGaleria = [
-  { imagem: "img/images.jpeg", alt: "Trabalho 1" },
-  { imagem: "img/images.jpeg", alt: "Trabalho 2" },
-  { imagem: "img/trabalho3.jpg", alt: "Trabalho 3" },
-  { imagem: "img/images.jpeg", alt: "Trabalho 4" },
-  { imagem: "img/trabalho5.jpg", alt: "Trabalho 5" },
-  { imagem: "img/trabalho6.jpg", alt: "Trabalho 6" },
-  { imagem: "img/trabalho7.jpg", alt: "Trabalho 7" },
-  { imagem: "img/trabalho8.jpg", alt: "Trabalho 8" },
-  { imagem: "img/trabalho9.jpg", alt: "Trabalho 9" },
+  { imagem: "img/images.jpeg", alt: "Torta de Frango" },
+  { imagem: "img/images.jpeg", alt: "Torta de Atum" },
+  { imagem: "img/trabalho3.jpg", alt: "Torta de Pão de Forma" },
+  { imagem: "img/trabalho5.jpg", alt: "Torta Especial" },
+  { imagem: "img/trabalho6.jpg", alt: "Baguete Recheada" },
+  { imagem: "img/trabalho7.jpg", alt: "Bolo de Chocolate" },
+  { imagem: "img/trabalho8.jpg", alt: "Bolo de Morango" }
 ];
 
-// Seleciona o container
-const galeriaContainer = document.getElementById("galeria-container");
+// =========================
+// INSERIR SLIDES
+// =========================
+const wrapper = document.getElementById("swiper-wrapper");
 
-// Cria os cards dinamicamente
+if (!wrapper) {
+  console.error("Elemento #swiper-wrapper não encontrado");
+  return;
+}
+
 fotosGaleria.forEach(foto => {
-  const col = document.createElement("div");
-  col.className = "col-12 col-sm-6 col-md-4";
+  const slide = document.createElement("div");
+  slide.className = "swiper-slide";
 
-  col.innerHTML = `
-    <div class="card galeria-card border border-warning p-1 shadow-sm">
-      <img src="${foto.imagem}" class="card-img-top" alt="${foto.alt}">
-      <div class="card-body text-center">
-        <a href="https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent("Olá, quero este trabalho: " + foto.alt)}"
-           target="_blank" class="btn btn-success btn-sm mt-2">Pedir no WhatsApp</a>
+  slide.innerHTML = `
+    <div class="card galeria-card border-0 h-100 overflow-hidden position-relative">
+
+      <div class="img-container">
+        <img src="${foto.imagem}" class="card-img-top" alt="${foto.alt}">
+
+        <!-- OVERLAY -->
+        <div class="overlay">
+          <button class="btn btn-warning btn-sm btn-detalhe"
+            data-img="${foto.imagem}"
+            data-nome="${foto.alt}">
+            Ver detalhes
+          </button>
+        </div>
       </div>
+
+      <div class="card-body text-center d-flex flex-column">
+        <h6 class="fw-bold text-warning ">${foto.alt}</h6>
+
+        <a href="https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent("Olá, quero este: " + foto.alt)}"
+          target="_blank"
+          class="btn btn-success btn-sm mt-auto">
+          Pedir no WhatsApp
+        </a>
+      </div>
+
     </div>
   `;
 
-  galeriaContainer.appendChild(col);
+  wrapper.appendChild(slide);
 });
+
+// =========================
+// INICIAR CARROSSEL
+// =========================
+new Swiper(".mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 20,
+  loop: true,
+
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false // 🔥 resolve travar no hover
+  },
+
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    576: { slidesPerView: 2 },
+    992: { slidesPerView: 3 }
+  }
+});
+
+
+// =================================
+// MODAL (CLIQUE) PÁGINA GALERIA 
+// =================================
+// =================================
+// MODAL (CLIQUE) - ABRIR DIRETO
+// =================================
+document.addEventListener("click", function(e) {
+
+  // Verifica se clicou em um botão de detalhe
+  if (e.target.classList.contains("btn-detalhe")) {
+
+    // Pega os dados do botão
+    const img = e.target.getAttribute("data-img");
+    const nome = e.target.getAttribute("data-nome");
+
+    // Insere no modal
+    document.getElementById("imagemModal").src = img;
+    document.getElementById("tituloModal").innerText = nome;
+
+    // Cria e abre o modal imediatamente
+    const modal = new bootstrap.Modal(document.getElementById("modalImagem"));
+    modal.show();
+  }
+
+});
+
+});
+
+
+
+// =================================
+// TEXTO ANIMADO PÁGINA GALERIA 
+// =================================
+const frases = [
+    "💬 Atendimento imediato no WhatsApp",
+    "Veja nossos trabalhos incríveis 👇",
+    "Qualidade que conquista clientes ✨",
+    "Produções feitas com carinho ❤️",
+    "Surpreenda-se com nossos resultados 🔥"
+];
+
+let i = 0;
+const elemento = document.getElementById("texto-dinamico");
+
+function trocarTexto() {
+    elemento.style.opacity = 0;
+
+    setTimeout(() => {
+        elemento.innerText = frases[i];
+        elemento.style.opacity = 1;
+        i = (i + 1) % frases.length;
+    }, 300);
+}
+
+setInterval(trocarTexto, 3000);
+trocarTexto();
+
 
 
 
