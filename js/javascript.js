@@ -161,19 +161,21 @@ function abrirModalSalgados(index) {
 document.addEventListener("DOMContentLoaded", () => {
 
   const numeroWhatsApp = "5521968061820";
+
   const fotosGaleria = [
-    { imagem: "img/images.jpeg", alt: "Torta de Frango" },
-    { imagem: "img/images.jpeg", alt: "Torta de Atum" },
-    { imagem: "img/trabalho3.jpg", alt: "Torta de Pão de Forma" },
-    { imagem: "img/trabalho5.jpg", alt: "Torta Especial" },
-    { imagem: "img/trabalho6.jpg", alt: "Baguete Recheada" },
-    { imagem: "img/trabalho7.jpg", alt: "Bolo de Chocolate" },
-    { imagem: "img/trabalho8.jpg", alt: "Bolo de Morango" }
+    { imagem: "img/WhatsApp_Image_2024-01-13_at_15.32.02__1_-removebg-preview.png", alt: "Torta Retangular de Pão de Forma", descricao: "Torta de três camadas de recheio, camada de maionese e toda cobertura de purê de batata." },
+    { imagem: "img/IMG-20210720-WA0070.jpg", alt: "Torta Redonda de Pão de Forma", descricao: "Torta de três camadas de recheio, camada de maionese e toda cobertura de purê de batata." },
+    { imagem: "img/pastel-assado-de-carne-seca-e-requeijao-40306-350x230.jpg", alt: "Pastel de Forno", descricao: "Recheio de Frango Massa com Guaraná." },
+    { imagem: "img/Pastel-assado-de-carne-seca.jpg", alt: "Pastel de Forno", descricao: "Recheio de Carne Seca Massa com Guaraná." },
+    { imagem: "img/esfiha_de_carne_moída.jpg", alt: "Esfirras", descricao: "Recheio de Frango." },
+    { imagem: "img/esfiha_de_carne_moída.jpg", alt: "Esfirras", descricao: "Recheio de Carne Moída." },
+    { imagem: "img/esfiha_de_carne_moída.jpg", alt: "Esfirras", descricao: "Recheio de Carne Seca." },
+    { imagem: "img/360_F_443926740_jRy6CUoRr7w4gLvBhl7LjBG33Eho0YiD.jpg", alt: "Coxinhas", descricao: "Recheio de Carne Seca." },
+    { imagem: "img/coxinha.webp", alt: "Coxinhas", descricao: "Recheio de Frango." },
+    { imagem: "img/01-Bolinho-de-queijo.jpg", alt: "Bolinha de Queijo", descricao: "Recheios Queijo e Presunto e Queijo Minas." },
   ];
 
-  // =========================
-  // INSERIR CARDS
-  // =========================
+  // Inserir cards
   const wrapper = document.getElementById("swiper-wrapper");
   wrapper.innerHTML = "";
 
@@ -182,12 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     slide.className = "swiper-slide";
 
     slide.innerHTML = `
-      <div class="card galeria-card position-relative">
-        <div class="img-container">
+      <div class="card galeria-card">
+        <div class="img-container position-relative">
           <img src="${foto.imagem}" alt="${foto.alt}">
-          <div class="overlay">
+          <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
             <button class="btn btn-warning btn-sm btn-detalhe"
-              data-img="${foto.imagem}" data-nome="${foto.alt}">
+              data-img="${foto.imagem}"
+              data-nome="${foto.alt}"
+              data-descricao="${foto.descricao}">
               Ver detalhes
             </button>
           </div>
@@ -203,32 +207,25 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(slide);
   });
 
-  // =========================
-  // MODAL DETALHE
-  // =========================
+  // Modal
   const modal = document.getElementById("modalImagem");
   const modalImg = document.getElementById("imagemModal");
   const modalTitle = document.getElementById("tituloModal");
-  const modalClose = modal.querySelector(".modal-close");
+  const modalDescription = document.getElementById("modalDescription");
 
   document.querySelectorAll(".btn-detalhe").forEach(btn => {
     btn.addEventListener("click", () => {
       modalImg.src = btn.dataset.img;
       modalTitle.textContent = btn.dataset.nome;
+      modalDescription.textContent = btn.dataset.descricao; // Descrição agora aparece
       new bootstrap.Modal(modal).show();
     });
   });
 
-  modalClose.addEventListener("click", () => {
-    bootstrap.Modal.getInstance(modal).hide();
-  });
-
-  // =========================
-  // INICIALIZA SWIPER
-  // =========================
+  // Inicializa Swiper
   new Swiper(".mySwiper", {
     slidesPerView: 3,
-    spaceBetween: 1,
+    spaceBetween: 20,
     loop: true,
     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     pagination: { el: ".swiper-pagination", clickable: true },
@@ -242,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
 // =================================
 // TEXTO ANIMADO PÁGINA GALERIA 
 // =================================
@@ -264,7 +260,7 @@ function trocarTexto() {
         elemento.innerText = frases[i];
         elemento.style.opacity = 1;
         i = (i + 1) % frases.length;
-    }, 300);
+    }, 50000);
 }
 
 setInterval(trocarTexto, 3000);
