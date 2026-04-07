@@ -70,7 +70,7 @@ function filtrarTortas(tipo) {
     const secao = document.getElementById("secao-torta-salgada");
 
     if (secao) {
-        const offset = 70;
+       const offset = 100; // maior que navbar
         const pos = secao.getBoundingClientRect().top + window.pageYOffset - offset;
 
         window.scrollTo({

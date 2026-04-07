@@ -216,44 +216,44 @@
 
 
 
-<section id="secao-torta-salgada" class="container py-5">
-  <h2 class="text-center text-warning mb-4">🥧 Nossas Tortas Salgadas de Pão de Forma</h2>
+        <section id="secao-torta-salgada" class="container py-5">
+        <h2 class="text-center text-warning mb-4">🥧 Nossas Tortas Salgadas de Pão de Forma</h2>
 
-  <div class="text-center mb-4">
-    <h5 class="mb-1">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</h5>
-    <p class="fw-bold text-warning mb-2">Para tamanhos maiores, entre em contato pelo WhatsApp para orçamento!</p>
-    <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
-  </div>
+        <div class="text-center mb-4">
+            <h5 class="mb-1">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</h5>
+            <p class="fw-bold text-warning mb-2">Para tamanhos maiores, entre em contato pelo WhatsApp para orçamento!</p>
+            <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
+        </div>
 
-  <!-- Filtros -->
-  <div class="text-center mb-4">
-    <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('todos')">Todos</button>
-    <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('retangular')">Retangular</button>
-    <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
-  </div>
+        <!-- Filtros -->
+        <div class="text-center mb-4">
+            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('todos')">Todos</button>
+            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('retangular')">Retangular</button>
+            <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
+        </div>
 
-  <!-- Container de cards responsivo -->
-  <div id="container-tortas" class="row g-3">
-    <!-- JS vai inserir os cards aqui -->
-  </div>
-</section>
+        <!-- Container de cards responsivo -->
+        <div id="container-tortas" class="row g-3">
+            <!-- JS vai inserir os cards aqui -->
+        </div>
+        </section>
 
-<!-- Modal Bootstrap -->
-<div class="modal fade" id="modalTorta" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-dark text-light">
-      <div class="modal-header justify-content-center">
-        <h5 id="modalTituloTorta" class="text-warning"></h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center">
-        <img id="modalImgTorta" class="img-fluid rounded mb-3" alt="Torta">
-        <p id="modalDescTorta"></p>
-        <h4 id="modalPrecoTorta" class="text-warning"></h4>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Modal Bootstrap -->
+        <div class="modal fade" id="modalTorta" tabindex="-1">
+            <div id="modalTortaDialog" class="modal-dialog  modal-xl    inamico">
+                <div class="modal-content  text-dark">
+                    <div class="modal-header    text-dark   content-center">
+                        <h5 id="modalTituloTorta" class="text-warning"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImgTorta" class="img-fluid rounded mb-3" alt="Torta">
+                        <p id="modalDescTorta"></p>
+                        <h4 id="modalPrecoTorta" class="text-warning"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="text-center mb-1 mb-5 anim-text">
             <i class="bi bi-whatsapp icone-zap"></i>
             <span class="texto-dinamico">Peça já a sua pelo Zap!</span>
@@ -299,7 +299,7 @@
 
         <div class="modal fade" id="modalSalgados" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content text-center">
+                 <div id="meuModalCustom" class="modal-content">
 
                     <div class="modal-header text-warning position-relative">
 
@@ -415,19 +415,29 @@
         ============================== -->
         <section id="galeria" class="galeria-fotos py-5">
             <div class="container">
-            <h2 class="text-center text-warning mb-4">Nossos Trabalhos</h2>
 
-            <div class="swiper mySwiper py-5">
-                <div class="swiper-wrapper" id="swiper-wrapper">
-                <!-- Cards gerados via JS -->
-                </div>
+                <a class="logo-sobre navbar-brand d-inline-flex align-items-center justify-content-center" href="#">
+                    <span class="logo-text">Tudo</span>
+                    <i class="fa-solid fa-chart-pie text-warning mx-1"></i>
+                    <span class="logo-text">Torta</span>
+                </a>
 
-                <!-- Navegação -->
-                <div class="swiper-button-next text-warning "></div>
-                <div class="swiper-button-prev text-warning"></div>
-                <!-- Paginação -->
-                <div class="swiper-pagination bg-warning"></div>
-            </div>
+               <p class="text-muted fs-3 text-center">
+                    <i class="bi bi-camera-fill text-warning me-2"></i>
+                    Galeria de Fotos dos Nossos Trabalhos
+                </p>
+
+                <div class="swiper mySwiper py-5">
+                    <div class="swiper-wrapper" id="swiper-wrapper">
+                    <!-- Cards gerados via JS -->
+                    </div>
+
+                    <!-- Navegação -->
+                    <div class="swiper-button-next text-warning "></div>
+                    <div class="swiper-button-prev text-warning"></div>
+                    <!-- Paginação -->
+                    <div class="swiper-pagination bg-warning"></div>
+                </div>'
             </div>
         </section>
 
