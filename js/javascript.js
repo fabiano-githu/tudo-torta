@@ -138,6 +138,8 @@ function renderizarCards() {
   });
 }
 
+
+
 // ✅ MODAL SALGADOS
 function abrirModalSalgados(index) {
   const produto = produtos[index];
@@ -149,6 +151,127 @@ function abrirModalSalgados(index) {
 
   new bootstrap.Modal(document.getElementById("modalSalgados")).show();
 }
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const numeroWhatsApp = "5521968061820";
+  const fotosGaleria = [
+    { imagem: "img/images.jpeg", alt: "Torta de Frango" },
+    { imagem: "img/images.jpeg", alt: "Torta de Atum" },
+    { imagem: "img/trabalho3.jpg", alt: "Torta de Pão de Forma" },
+    { imagem: "img/trabalho5.jpg", alt: "Torta Especial" },
+    { imagem: "img/trabalho6.jpg", alt: "Baguete Recheada" },
+    { imagem: "img/trabalho7.jpg", alt: "Bolo de Chocolate" },
+    { imagem: "img/trabalho8.jpg", alt: "Bolo de Morango" }
+  ];
+
+  // =========================
+  // INSERIR CARDS
+  // =========================
+  const wrapper = document.getElementById("swiper-wrapper");
+  wrapper.innerHTML = "";
+
+  fotosGaleria.forEach(foto => {
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+
+    slide.innerHTML = `
+      <div class="card galeria-card position-relative">
+        <div class="img-container">
+          <img src="${foto.imagem}" alt="${foto.alt}">
+          <div class="overlay">
+            <button class="btn btn-warning btn-sm btn-detalhe"
+              data-img="${foto.imagem}" data-nome="${foto.alt}">
+              Ver detalhes
+            </button>
+          </div>
+        </div>
+        <div class="card-body text-center d-flex flex-column">
+          <h6 class="fw-bold text-warning mb-2">${foto.alt}</h6>
+          <a href="https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent("Olá, quero este: " + foto.alt)}"
+            target="_blank" class="btn btn-success btn-sm mt-auto">Pedir no WhatsApp</a>
+        </div>
+      </div>
+    `;
+
+    wrapper.appendChild(slide);
+  });
+
+  // =========================
+  // MODAL DETALHE
+  // =========================
+  const modal = document.getElementById("modalImagem");
+  const modalImg = document.getElementById("imagemModal");
+  const modalTitle = document.getElementById("tituloModal");
+  const modalClose = modal.querySelector(".modal-close");
+
+  document.querySelectorAll(".btn-detalhe").forEach(btn => {
+    btn.addEventListener("click", () => {
+      modalImg.src = btn.dataset.img;
+      modalTitle.textContent = btn.dataset.nome;
+      new bootstrap.Modal(modal).show();
+    });
+  });
+
+  modalClose.addEventListener("click", () => {
+    bootstrap.Modal.getInstance(modal).hide();
+  });
+
+  // =========================
+  // INICIALIZA SWIPER
+  // =========================
+  new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 1,
+    loop: true,
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    pagination: { el: ".swiper-pagination", clickable: true },
+    autoplay: { delay: 2500, disableOnInteraction: false },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      576: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      992: { slidesPerView: 3 }
+    }
+  });
+
+});
+
+// =================================
+// TEXTO ANIMADO PÁGINA GALERIA 
+// =================================
+const frases = [
+    "💬 Atendimento imediato no WhatsApp",
+    "Veja nossos trabalhos incríveis 👇",
+    "Qualidade que conquista clientes ✨",
+    "Produções feitas com carinho ❤️",
+    "Surpreenda-se com nossos resultados 🔥"
+];
+
+let i = 0;
+const elemento = document.getElementById("texto-dinamico");
+
+function trocarTexto() {
+    elemento.style.opacity = 0;
+
+    setTimeout(() => {
+        elemento.innerText = frases[i];
+        elemento.style.opacity = 1;
+        i = (i + 1) % frases.length;
+    }, 300);
+}
+
+setInterval(trocarTexto, 3000);
+trocarTexto();
+
+
+
 
 // =========================
 // INICIALIZAÇÃO
