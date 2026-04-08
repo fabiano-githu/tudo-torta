@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="card-body text-center d-flex flex-column">
           <h6 class="fw-bold text-warning mb-2">${foto.alt}</h6>
           <a href="https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent("Olá, quero este: " + foto.alt)}"
-            target="_blank" class="btn btn-success btn-sm mt-auto">Pedir no WhatsApp</a>
+            target="_blank" class="btn btn-warning btn-sm mt-auto">Pedir no WhatsApp</a>
         </div>
       </div>
     `;
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializa Swiper
   new Swiper(".mySwiper", {
     slidesPerView: 3,
-    spaceBetween: 20,
+    spaceBetween: 15,
     loop: true,
     navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
     pagination: { el: ".swiper-pagination", clickable: true },
@@ -239,15 +239,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 // =================================
 // TEXTO ANIMADO PÁGINA GALERIA 
 // =================================
 const frases = [
-    "💬 Atendimento imediato no WhatsApp",
-    "Veja nossos trabalhos incríveis 👇",
-    "Qualidade que conquista clientes ✨",
-    "Produções feitas com carinho ❤️",
-    "Surpreenda-se com nossos resultados 🔥"
+      "🎁 Tudo Torta presente nos seus melhores momentos",
+    "🍰 Tudo Torta: sabor que conquista no primeiro pedaço",
+    "📲 Peça agora na Tudo Torta e surpreenda!",
+    "🎉 Sua festa começa com a Tudo Torta",
+    "🔥 Tudo Torta — qualidade e sabor de verdade",
+    "❤️ Tudo Torta: feito com carinho para você",
+    "🥧 Tudo Torta presente em cada detalhe especial",
+    "🚀 Atendimento rápido é na Tudo Torta",
+    "✨ Tudo Torta transforma sua ideia em realidade",
+    "🎂 Tudo Torta: a escolha perfeita para sua comemoração",
+    "😋 Quem prova Tudo Torta sempre volta",
+    "📦 Encomende hoje mesmo na Tudo Torta",
+    "💬 Fale com a Tudo Torta no WhatsApp agora",
+    "🥇 Tudo Torta — referência em sabor e qualidade"
 ];
 
 let i = 0;
@@ -263,7 +273,7 @@ function trocarTexto() {
     }, 50000);
 }
 
-setInterval(trocarTexto, 3000);
+setInterval(trocarTexto, 6000);
 trocarTexto();
 
 

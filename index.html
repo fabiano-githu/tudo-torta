@@ -38,7 +38,7 @@
 
 
         <!-- =================############# NAVBAR ###########================= -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark  shadow-sm">
             <div class="container">
 
                 <a class="logo-marca navbar-brand mx-auto" href="#">
@@ -216,58 +216,11 @@
 
 
 
-        <section id="secao-torta-salgada" class="container py-5">
-        <h2 class="text-center text-warning mb-4">🥧 Nossas Tortas Salgadas de Pão de Forma</h2>
-
-        <div class="text-center mb-4">
-            <h5 class="mb-1">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</h5>
-            <p class="fw-bold text-warning mb-2">Para tamanhos maiores, entre em contato pelo WhatsApp para orçamento!</p>
-            <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
-        </div>
-
-        <!-- Filtros -->
-        <div class="text-center mb-4">
-            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('todos')">Todos</button>
-            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('retangular')">Retangular</button>
-            <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
-        </div>
-
-        <!-- Container de cards responsivo -->
-        <div id="container-tortas" class="row g-3">
-            <!-- JS vai inserir os cards aqui -->
-        </div>
-        </section>
-
-        <!-- Modal Bootstrap -->
-        <div class="modal fade" id="modalTorta" tabindex="-1">
-            <div id="modalTortaDialog" class="modal-dialog  modal-xl    inamico">
-                <div class="modal-content  text-dark">
-                    <div class="modal-header    text-dark   content-center">
-                        <h5 id="modalTituloTorta" class="text-warning"></h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img id="modalImgTorta" class="img-fluid rounded mb-3" alt="Torta">
-                        <p id="modalDescTorta"></p>
-                        <h4 id="modalPrecoTorta" class="text-warning"></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mb-1 mb-5 anim-text">
-            <i class="bi bi-whatsapp icone-zap"></i>
-            <span class="texto-dinamico">Peça já a sua pelo Zap!</span>
-
-        </div>
-
-
-
-
 
 
 
         <!-- =================############# SEÇÃO CARDS SALGADOS ###########================= -->
-        <h2 id="salgados" class="titulo-animado text-center text-warning mb-0 py-3 fs-1">
+        <h1 id="salgados" class="titulo-animado text-center text-warning mb-0 py-5 fs-3">
             
             🍽️ Nossos Salgados  
 
@@ -275,11 +228,11 @@
                 <i class="bi bi-fire"></i> 👨‍🍳 Seleção especial
             </span>
 
-        </h2>
+        </h1>
 
         
 
-        <section class="container py-5 ">
+        <section class="secao-box-salgados container py-5 ">
 
            <div class="subtitulo d-flex justify-content-center align-items-center gap-2 py-5">
 
@@ -328,6 +281,67 @@
 
 
 
+        <!-- =================############# SEÇÃO TORTA SALGADA ###########================= -->
+        <section id="secao-torta-salgada" class="container py-5 ">
+            <h1 class="text-center text-warning  mb-1">🥧 Nossas Tortas Salgadas de Pão de Forma</h1>
+            <h5 class="text-center text-white mb-4">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</h5>
+
+            <div class="text-center  mb-4">
+                <a href="https://web.whatsapp.com/" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
+            </div>
+
+            <!-- Filtros -->
+            <div class="text-center mb-4">
+                <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('todos')">Todos</button>
+                <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('retangular')">Retangular</button>
+                <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
+            </div>
+
+            <!-- Container de cards responsivo -->
+            <div id="container-tortas" class="row g-3">
+                <!-- JS vai inserir os cards aqui -->
+            </div>
+
+
+
+              <div class="subtitulo d-flex justify-content-center align-items-center py-5 gap-2 ">
+
+                <i class="bi bi-telephone-fill icone-telefone"></i>
+
+                <span class="texto-destaque fs-1">Peça já pelo zap</span>
+
+                <i class="bi bi-whatsapp icone-zap"></i>
+
+            </div>
+
+        </section>
+
+
+
+ 
+
+
+        <!-- Modal Bootstrap -->
+        <div class="modal fade" id="modalTorta" tabindex="-1">
+            <div id="modalTortaDialog" class="modal-dialog  modal-xl    inamico">
+                <div class="modal-content  text-dark">
+                    <div class="modal-header    text-dark   content-center">
+                        <h5 id="modalTituloTorta" class="text-warning"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImgTorta" class="img-fluid rounded mb-3" alt="Torta">
+                        <p id="modalDescTorta"></p>
+                        <h4 id="modalPrecoTorta" class="text-warning"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+
+
+
+
 
         <!-- =================############# SEÇÃO SOBRE ###########================= -->
         <section id="sobre" class="sobre-section py-5">
@@ -372,23 +386,45 @@
                 </div>
 
                 <!-- CONTATO -->
-                <div class="col-12 col-md-6">
-                    <div class="sobre-box h-100 text-center">
+                <div class="col-12 col-md-6 d-flex">
+                    <div class="sobre-box h-100 text-center w-100 d-flex flex-column justify-content-center align-items-center">
 
-                    <i class="fa-solid fa-headset icon-top text-warning"></i>
+                        <i class="fa-solid fa-headset icon-top text-warning mb-3"></i>
 
-                    <h4 class="mb-3">Contato</h4>
+                        <h4 class="mb-3">Contato</h4>
 
-                    <p class="mb-2">📍 Atendimento na sua região</p>
-                    <p class="mb-2">📞 (21) 96806-1820</p>
-                    <p class="mb-3">📧 chaversantos70@gmail.com</p>
+                        <p class="mb-2">📍 Atendimento na sua região</p>
+                        <p class="mb-2">📞 (21) 96806-1820</p>
+                        <p class="mb-3">📧 chaversantos70@gmail.com</p>
 
-                    <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-whatsapp w-50">
-                        Chamar no WhatsApp
-                    </a>
+                        <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-whatsapp px-4">
+                            Chamar no WhatsApp
+                        </a>
 
                     </div>
                 </div>
+
+
+                <div class="container text-center py-4">
+
+                    <p class="fw-bold mb-3">
+                        📸 Siga a <span class="text-warning">Tudo Torta</span> no Instagram
+                    </p>
+
+                    <div class="d-flex justify-content-center align-items-center gap-2 gap-md-3 flex-wrap">
+
+                        <a href="https://instagram.com/seuusuario" target="_blank" 
+                        class="insta-hover text-decoration-none d-flex align-items-center gap-2 px-2 px-md-3 py-5 rounded">
+
+                        <i class="bi bi-instagram fs-4 fs-md-3 rounded-5 "></i>
+
+                        <span class="fw-semibold small fs-md-5">
+                            @tudotorta2021
+                        </span>
+
+                        </a>
+
+                    </div>
 
                 </div>
 
@@ -403,12 +439,6 @@
         
         <!-- =================############# SEÇÃO GALERIA DE FOTOS ###########================= -->
 
-        <!-- ## SEÇÃO TEXTO DINÂMICO ## -->
-        <section id="galeria" class="container py-5 text-center">
-            <h2 class="fw-bold text-warning">
-                <span id="texto-dinamico"></span>
-            </h2>
-        </section>
 
         <!-- ==============================
             GALERIA DE FOTOS
@@ -416,14 +446,15 @@
         <section id="galeria" class="galeria-fotos py-5">
             <div class="container">
 
-                <a class="logo-sobre navbar-brand d-inline-flex align-items-center justify-content-center" href="#">
-                    <span class="logo-text">Tudo</span>
-                    <i class="fa-solid fa-chart-pie text-warning mx-1"></i>
-                    <span class="logo-text">Torta</span>
-                </a>
-
+                <div class="w-100 d-flex justify-content-center">
+                    <a class="logo-galeria navbar-brand d-inline-flex align-items-center" href="#">
+                        <span class="logo-text">Tudo</span>
+                        <i class="fa-solid fa-chart-pie text-warning mx-1"></i>
+                        <span class="logo-text">Torta</span>
+                    </a>
+                </div>
                <p class="text-muted fs-3 text-center">
-                    <i class="bi bi-camera-fill text-warning me-2"></i>
+                    <i class="bi bi-camera-fill text-warning texto-dinamico"></i>
                     Galeria de Fotos dos Nossos Trabalhos
                 </p>
 
@@ -437,8 +468,15 @@
                     <div class="swiper-button-prev text-warning"></div>
                     <!-- Paginação -->
                     <div class="swiper-pagination bg-warning"></div>
-                </div>'
+                </div>
             </div>
+        </section>
+
+        <!-- ## SEÇÃO TEXTO DINÂMICO ## -->
+        <section id="galeria" class="container py-5 mb-5 text-center">
+            <h2 class="fw-bold text-warning">
+                <span id="texto-dinamico"></span>
+            </h2>
         </section>
 
         <!-- ==============================
@@ -467,8 +505,8 @@
 
 
         <!-- =================######## SECTION FOOTER#######================= -->
-        <footer class="footer bg-dark text-white py-5 mt-auto">
-        <div class="container text-center bg-dark ">
+        <footer class="footer  text-white py-5 mt-auto">
+        <div class="container text-center  ">
 
             <div class="row justify-content-center">
 
