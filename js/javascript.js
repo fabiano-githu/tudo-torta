@@ -2,272 +2,363 @@
 // CONFIGURAÇÕES GLOBAIS
 // =========================
 const numeroWhatsApp = "5521968061820";
+let currentSlide = 0;
+let currentGaleria = 0;
 
 // =========================
-// SEÇÃO TORTAS SALGADAS
-// =========================
-const tortas = [
-    { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 100.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 10 pessoas", imagem: "img/WhatsApp_Image_2024-01-13_at_15.32.02__1_-removebg-preview.png" },
-    { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 200.00, descricao: "Cobertura Purê de Batata (30x40cm)\nServe até 30 pessoas", imagem: "img/WhatsApp Image 2024-03-24 at 20.37.17 (2).jpeg" },
-    { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 250.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 40 pessoas", imagem: "img/IMG_20230507_081014742.jpg" },
-    { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 100.00, descricao: "Cobertura Purê de Batata (25cm)\nServe até 12 pessoas", imagem: "img/IMG_20220921_162929284.jpg" },
-    { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 150.00, descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas", imagem: "img/IMG-20210720-WA0070.jpg" },
-    { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 180.00, descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas", imagem: "img/WhatsApp Image 2023-10-21 at 17.13.07 (1).jpeg" },
-];
-
-function renderTortas(tipoSelecionado = "todos") {
-    const container = document.getElementById("container-tortas");
-    if (!container) return;
-    
-    container.innerHTML = "";
-
-    tortas.forEach((torta, index) => {
-        if (tipoSelecionado === "todos" || torta.tipo === tipoSelecionado) {
-            const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero pedir a torta: ${torta.nome}`)}`;
-
-            const col = document.createElement("div");
-            col.className = "col-md-4 col-sm-6 mb-4";
-
-            col.innerHTML = `
-                <div class="card torta-card shadow-lg border-3 border-warning h-100">
-                    <img src="${torta.imagem}" class="card-img-top" alt="${torta.nome}">
-                    <div class="card-body d-flex flex-column text-center">
-                        <h5 class="card-title text-warning">${torta.nome}</h5>
-                        <p class="card-text text-white flex-grow-1">${torta.descricao.replace(/\n/g, "<br>")}</p>
-                        <h4 class="text-warning fw-bold mb-3">R$ ${torta.preco.toFixed(2)}</h4>
-                        
-                        <div class="mt-auto d-flex flex-column gap-2">
-                            <button class="btn btn-warning" onclick="abrirModalTorta(${index})">
-                                Ver Detalhes
-                            </button>
-                            <a href="${linkZap}" target="_blank" class="btn btn-success">
-                                Pedir no WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(col);
-        }
-    });
-}
-
-function abrirModalTorta(index) {
-    const torta = tortas[index];
-    if (!torta) return;
-
-    document.getElementById("modalTituloTorta").textContent = torta.nome;
-    document.getElementById("modalImgTorta").src = torta.imagem;
-    document.getElementById("modalDescTorta").innerHTML = torta.descricao.replace(/\n/g, "<br>");
-    document.getElementById("modalPrecoTorta").textContent = `R$ ${torta.preco.toFixed(2)}`;
-
-    new bootstrap.Modal(document.getElementById("modalTorta")).show();
-}
-
-// =========================
-// FILTRAR TORTAS
-// =========================
-function filtrarTortas(tipo) {
-    renderTortas(tipo);
-
-    const secao = document.getElementById("secao-torta-salgada");
-    if (secao) {
-        const offset = 100;
-        const pos = secao.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: pos, behavior: "smooth" });
-    }
-}
-
-// =========================
-// SEÇÃO SALGADOS
+// DADOS DOS PRODUTOS
 // =========================
 const produtos = [
-    { nome: "Coxinha", preco: 2.00, descricao: "Carne seca temperado\n(Unid 30g)", imagem: "img/coxinha.webp" },
-    { nome: "Coxinha", preco: 1.50, descricao: "Frango temperado\n(Unid 30g)", imagem: "img/coxinha-de-frango-jpeg.webp" },
-    { nome: "Bolinha", preco: 1.50, descricao: "Queijo\n(Unid 30g)", imagem: "img/01-Bolinho-de-queijo.jpg" },
-    { nome: "Pastel de Forno", preco: 2.50, descricao: "Frango\n(Unid 40g)", imagem: "img/maxresdefault-2022-10-03T105917.680.jpg" },
-    { nome: "Pastel de Forno", preco: 2.50, descricao: "Carne seca\n(Unid 40g)", imagem: "img/Pastel-assado-de-carne-seca.jpg" },
-    { nome: "Esfirra", preco: 2.50, descricao: "Carne moída\n(Unid 40g)", imagem: "img/Esfirra-de-carne-moida.jpg" },
-    { nome: "Esfirra", preco: 1.50, descricao: "Frango\n(Unid 40g)", imagem: "img/hq720.jpg" },
-    { nome: "Joelho", preco: 1.50, descricao: "Queijo e presunto\n(Unid 40g)", imagem: "img/71929-original.webp" }
+  { nome: "Coxinha", preco: 2.00, descricao: "Carne seca temperado\n(Unid 30g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Coxinha", preco: 1.50, descricao: "Frango temperado\n(Unid 30g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Bolinha", preco: 1.50, descricao: "Queijo\n(Unid 30g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Pastel de Forno", preco: 2.50, descricao: "Frango\n(Unid 40g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Pastel de Forno", preco: 2.50, descricao: "Carne seca\n(Unid 40g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Esfirra", preco: 2.50, descricao: "Carne moída\n(Unid 40g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Esfirra", preco: 1.50, descricao: "Frango\n(Unid 40g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Joelho", preco: 1.50, descricao: "Queijo e presunto\n(Unid 40g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" }
 ];
 
+const tortas = [
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 100.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 10 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 200.00, descricao: "Cobertura Purê de Batata (30x40cm)\nServe até 30 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 250.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 40 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 100.00, descricao: "Cobertura Purê de Batata (25cm)\nServe até 12 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 150.00, descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 180.00, descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" }
+];
+
+const fotosGaleria = [
+  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Torta Retangular", descricao: "Torta de três camadas de recheio com cobertura de purê de batata." },
+  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Torta Redonda", descricao: "Torta redonda de pão de forma com purê de batata." },
+  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com carne seca." },
+  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com frango." }
+];
+
+// =========================
+// RENDERIZAR SALGADOS
+// =========================
 function renderizarCards() {
-    const container = document.getElementById("cards-container");
-    if (!container) return;
+  const container = document.getElementById("cardsContainer");
+  if (!container) return;
 
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    produtos.forEach((produto, index) => {
-        const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero comprar: ${produto.nome}`)}`;
+  produtos.forEach((produto, index) => {
+    const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero comprar: ${produto.nome}`)}`;
 
-        const cardHTML = `
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card card-custom h-100">
-                    <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}">
-                    <div class="card-body d-flex flex-column text-center">
-                        <h5 class="card-title text-warning">${produto.nome}</h5>
-                        <p class="card-text text-white">${produto.descricao.replace(/\n/g, "<br>")}</p>
-                        <h6 class="text-warning fw-bold fs-4 mb-3">R$ ${produto.preco.toFixed(2)}</h6>
-                        
-                        <div class="mt-auto d-flex gap-2">
-                            <a href="${linkZap}" target="_blank" class="btn btn-success flex-fill">Comprar</a>
-                            <button class="btn btn-outline-warning flex-fill" onclick="abrirModalSalgados(${index})">Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        container.innerHTML += cardHTML;
-    });
+    const card = document.createElement("div");
+    card.className = "card-custom";
+    card.innerHTML = `
+      <img src="${produto.imagem}" alt="${produto.nome}">
+      <div class="card-body">
+        <h5>${produto.nome}</h5>
+        <p>${produto.descricao.replace(/\n/g, "<br>")}</p>
+        <div class="price">R$ ${produto.preco.toFixed(2)}</div>
+        <div class="card-buttons">
+          <a href="${linkZap}" target="_blank" class="btn btn-success">Comprar</a>
+          <button class="btn btn-outline-warning" onclick="abrirModalSalgados(${index})">Detalhes</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
 }
 
 function abrirModalSalgados(index) {
-    const produto = produtos[index];
-    if (!produto) return;
+  const produto = produtos[index];
+  if (!produto) return;
 
-    document.getElementById("modalImagemSalgado").src = produto.imagem;
-    document.getElementById("modalTituloSalgado").textContent = produto.nome;
-    document.getElementById("modalDescricaoSalgado").textContent = produto.descricao.replace(/\n/g, " ");
-    document.getElementById("modalPrecoSalgado").textContent = `R$ ${produto.preco.toFixed(2)}`;
+  document.getElementById("modalTituloSalgado").textContent = produto.nome;
+  document.getElementById("modalImagemSalgado").src = produto.imagem;
+  document.getElementById("modalDescricaoSalgado").textContent = produto.descricao.replace(/\n/g, " ");
+  document.getElementById("modalPrecoSalgado").textContent = `R$ ${produto.preco.toFixed(2)}`;
 
-    // Link WhatsApp no modal (se existir o botão)
-    const btnWhats = document.getElementById("btnWhatsSalgado");
-    if (btnWhats) {
-        const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero pedir: ${produto.nome}`)}`;
-        btnWhats.href = linkZap;
+  const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero pedir: ${produto.nome}`)}`;
+  document.getElementById("btnWhatsSalgado").href = linkZap;
+
+  abrirModal("modalSalgados");
+}
+
+// =========================
+// RENDERIZAR TORTAS
+// =========================
+function renderTortas(tipoSelecionado = "todos") {
+  const container = document.getElementById("containerTortas");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const tortasFiltradas = tipoSelecionado === "todos" ? tortas : tortas.filter(t => t.tipo === tipoSelecionado);
+
+  tortasFiltradas.forEach((torta, index) => {
+    const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero pedir a torta: ${torta.nome}`)}`;
+
+    const card = document.createElement("div");
+    card.className = "torta-card";
+    card.innerHTML = `
+      <img src="${torta.imagem}" alt="${torta.nome}">
+      <div class="card-body">
+        <h5>${torta.nome}</h5>
+        <p>${torta.descricao.replace(/\n/g, "<br>")}</p>
+        <div class="price">R$ ${torta.preco.toFixed(2)}</div>
+        <div class="card-buttons">
+          <button class="btn btn-outline-warning" onclick="abrirModalTorta(${index})">Ver Detalhes</button>
+          <a href="${linkZap}" target="_blank" class="btn btn-success">Pedir</a>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function abrirModalTorta(index) {
+  const torta = tortas[index];
+  if (!torta) return;
+
+  document.getElementById("modalTituloTorta").textContent = torta.nome;
+  document.getElementById("modalImgTorta").src = torta.imagem;
+  document.getElementById("modalDescTorta").innerHTML = torta.descricao.replace(/\n/g, "<br>");
+  document.getElementById("modalPrecoTorta").textContent = `R$ ${torta.preco.toFixed(2)}`;
+
+  const linkZap = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(`Olá, quero pedir a torta: ${torta.nome}`)}`;
+  document.getElementById("btnWhatsTorta").href = linkZap;
+
+  abrirModal("modalTorta");
+}
+
+function filtrarTortas(tipo) {
+  renderTortas(tipo);
+  
+  // Atualizar botões
+  document.querySelectorAll(".filtros .btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  event.target.classList.add("active");
+
+  // Scroll suave
+  const secao = document.getElementById("secao-torta-salgada");
+  if (secao) {
+    const offset = 100;
+    const pos = secao.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: pos, behavior: "smooth" });
+  }
+}
+
+// =========================
+// GALERIA
+// =========================
+function renderizarGaleria() {
+  const container = document.getElementById("galeriaContainer");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  fotosGaleria.forEach((foto, index) => {
+    const card = document.createElement("div");
+    card.className = "galeria-card";
+    card.innerHTML = `
+      <img src="${foto.imagem}" alt="${foto.alt}" style="cursor: pointer;" onclick="abrirModalGaleria(${index})">
+      <div class="card-body">
+        <button class="btn btn-outline-warning" onclick="abrirModalGaleria(${index})">Ver Detalhes</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  renderizarIndicadoresGaleria();
+}
+
+function abrirModalGaleria(index) {
+  const foto = fotosGaleria[index];
+  if (!foto) return;
+
+  document.getElementById("modalGaleriaImg").src = foto.imagem;
+  document.getElementById("modalGaleriaTitulo").textContent = foto.alt;
+  document.getElementById("modalGaleriaDesc").textContent = foto.descricao;
+
+  abrirModal("modalGaleria");
+}
+
+function renderizarIndicadoresGaleria() {
+  const container = document.getElementById("galeriaIndicators");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  fotosGaleria.forEach((_, index) => {
+    const indicator = document.createElement("div");
+    indicator.className = `galeria-indicator ${index === currentGaleria ? "active" : ""}`;
+    indicator.onclick = () => {
+      currentGaleria = index;
+      const galeriaContainer = document.getElementById("galeriaContainer");
+      const scrollAmount = index * 320;
+      galeriaContainer.scrollLeft = scrollAmount;
+      renderizarIndicadoresGaleria();
+    };
+    container.appendChild(indicator);
+  });
+}
+
+function mudarGaleria(direcao) {
+  currentGaleria = (currentGaleria + direcao + fotosGaleria.length) % fotosGaleria.length;
+  const galeriaContainer = document.getElementById("galeriaContainer");
+  const scrollAmount = currentGaleria * 320;
+  galeriaContainer.scrollLeft = scrollAmount;
+  renderizarIndicadoresGaleria();
+}
+
+// =========================
+// CAROUSEL HERO
+// =========================
+function renderizarIndicadores() {
+  const container = document.getElementById("indicators");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  for (let i = 0; i < 3; i++) {
+    const indicator = document.createElement("div");
+    indicator.className = `indicator ${i === currentSlide ? "active" : ""}`;
+    indicator.onclick = () => {
+      currentSlide = i;
+      mostrarSlide();
+    };
+    container.appendChild(indicator);
+  }
+}
+
+function mostrarSlide() {
+  const slides = document.querySelectorAll(".carousel-slide");
+  slides.forEach((slide, index) => {
+    slide.classList.remove("active");
+    if (index === currentSlide) {
+      slide.classList.add("active");
     }
+  });
 
-    new bootstrap.Modal(document.getElementById("modalSalgados")).show();
+  renderizarIndicadores();
+}
+
+function mudarSlide(direcao) {
+  currentSlide = (currentSlide + direcao + 3) % 3;
+  mostrarSlide();
+}
+
+function autoCarousel() {
+  setInterval(() => {
+    mudarSlide(1);
+  }, 4500);
 }
 
 // =========================
-// GALERIA + SWIPER
+// MODAIS
 // =========================
-function inicializarGaleria() {
-    const fotosGaleria = [
-        { imagem: "img/WhatsApp_Image_2024-01-13_at_15.32.02__1_-removebg-preview.png", alt: "Torta Retangular", descricao: "Torta de três camadas de recheio com cobertura de purê de batata." },
-        { imagem: "img/IMG-20210720-WA0070.jpg", alt: "Torta Redonda", descricao: "Torta redonda de pão de forma com purê de batata." },
-        { imagem: "img/pastel-assado-de-carne-seca-e-requeijao-40306-350x230.jpg", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com carne seca." },
-        { imagem: "img/Pastel-assado-de-carne-seca.jpg", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com frango." },
-    ];
+function abrirModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+}
 
-    const wrapper = document.getElementById("swiper-wrapper");
-    if (!wrapper) return;
+function fecharModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto";
+  }
+}
 
-    wrapper.innerHTML = "";
+// Fechar modal ao clicar fora
+window.onclick = function(event) {
+  if (event.target.classList.contains("modal")) {
+    event.target.classList.remove("show");
+    document.body.style.overflow = "auto";
+  }
+};
 
-    fotosGaleria.forEach(foto => {
-        const slide = document.createElement("div");
-        slide.className = "swiper-slide";
+// =========================
+// MENU MOBILE
+// =========================
+function inicializarMenuMobile() {
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
 
-        slide.innerHTML = `
-            <div class="card galeria-card">
-                <img src="${foto.imagem}" alt="${foto.alt}" class="card-img-top">
-                <div class="card-body text-center pt-3">
-                    <button class="btn btn-outline-warning btn-detalhe w-100"
-                        data-img="${foto.imagem}"
-                        data-nome="${foto.alt}"
-                        data-descricao="${foto.descricao}">
-                        Ver Detalhes
-                    </button>
-                </div>
-            </div>
-        `;
-        wrapper.appendChild(slide);
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navMenu.classList.toggle("active");
     });
 
-    // Inicializa Swiper
-    new Swiper(".mySwiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-        pagination: { el: ".swiper-pagination", clickable: true },
-        autoplay: { delay: 2800, disableOnInteraction: false },
-        breakpoints: {
-            576: { slidesPerView: 2 },
-            768: { slidesPerView: 3 }
-        }
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
     });
+
+    // Dropdown mobile
+    const dropdownBtn = document.querySelector(".dropdown-btn");
+    const navDropdown = document.querySelector(".nav-dropdown");
+
+    if (dropdownBtn && navDropdown) {
+      dropdownBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        navDropdown.classList.toggle("active");
+      });
+    }
+  }
 }
 
 // =========================
-// MODAL DA GALERIA
+// BOTÃO VOLTAR AO TOPO
 // =========================
-function configurarModalGaleria() {
-    const modal = document.getElementById("modalPadrao");
-    if (!modal) return;
+function inicializarBotaoTopo() {
+  const btnTopo = document.getElementById("btnTopo");
+  if (!btnTopo) return;
 
-    document.addEventListener("click", (e) => {
-        const btn = e.target.closest(".btn-detalhe");
-        if (!btn) return;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      btnTopo.classList.add("show");
+    } else {
+      btnTopo.classList.remove("show");
+    }
+  });
 
-        document.getElementById("modalImg").src = btn.dataset.img;
-        document.getElementById("modalTitulo").textContent = btn.dataset.nome;
-        document.getElementById("modalDescricao").textContent = btn.dataset.descricao;
-        document.getElementById("modalPreco").textContent = "";
-
-        new bootstrap.Modal(modal).show();
-    });
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 // =========================
-// TEXTO ANIMADO
-// =========================
-const frases = [
-    "🎁 Tudo Torta presente nos seus melhores momentos",
-    "🍰 Sabor que conquista no primeiro pedaço",
-    "📲 Peça agora na Tudo Torta!",
-    "🎉 Sua festa começa com a Tudo Torta",
-    "❤️ Feito com carinho para você"
-];
-
-let indice = 0;
-const elementoTexto = document.getElementById("texto-dinamico");
-
-function trocarTexto() {
-    if (!elementoTexto) return;
-    elementoTexto.style.opacity = 0;
-
-    setTimeout(() => {
-        elementoTexto.textContent = frases[indice];
-        elementoTexto.style.opacity = 1;
-        indice = (indice + 1) % frases.length;
-    }, 600);
-}
-
-setInterval(trocarTexto, 5000);
-trocarTexto();
-
-// =========================
-// INICIALIZAÇÃO GERAL
+// INICIALIZAÇÃO
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
-    renderTortas("todos");
-    renderizarCards();
-    inicializarGaleria();
-    configurarModalGaleria();
+  // Renderizar conteúdo
+  renderizarCards();
+  renderTortas("todos");
+  renderizarGaleria();
 
-    // Hero Carousel
-    new bootstrap.Carousel('#heroCarousel', {
-        interval: 4500,
-        ride: 'carousel'
-    });
+  // Carousel
+  mostrarSlide();
+  autoCarousel();
 
-    // Ano no Footer
-    const anoEl = document.getElementById("ano");
-    if (anoEl) anoEl.textContent = new Date().getFullYear();
+  // Menu mobile
+  inicializarMenuMobile();
 
-    // Botão Voltar ao Topo
-    const btnTopo = document.getElementById("btnTopo");
-    if (btnTopo) {
-        window.addEventListener("scroll", () => {
-            btnTopo.classList.toggle("show", window.scrollY > 400);
-        });
+  // Botão topo
+  inicializarBotaoTopo();
 
-        btnTopo.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    }
+  // Ano no footer
+  const anoEl = document.getElementById("ano");
+  if (anoEl) {
+    anoEl.textContent = new Date().getFullYear();
+  }
+
+  // Atualizar botões de filtro
+  document.querySelectorAll(".filtros .btn").forEach((btn, index) => {
+    if (index === 0) btn.classList.add("active");
+  });
 });

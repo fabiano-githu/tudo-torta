@@ -3,372 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TudoTorta</title>
+    <title>TudoTorta - Salgados e Tortas Artesanais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Swiper (carrossel) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 
-    <!-- Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-
-    <!-- Seu CSS -->
-    <link rel="stylesheet" href="css/css.css">
-
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/css.css">
 </head>
-
-<body class="d-flex flex-column min-vh-100">
-
+<body>
     <!-- ================= NAVBAR ================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-        <div class="container">
-            <a class="logo-marca navbar-brand mx-auto" href="#">
-                Tudo<i class="fa-solid fa-chart-pie text-warning mx-1"></i>Torta
+    <nav class="navbar">
+        <div class="container-nav">
+            <a class="logo-marca" href="#">
+                Tudo<i class="fa-solid fa-chart-pie text-primary mx-1"></i>Torta
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                <span class="navbar-toggler-icon"></span>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="menuNavbar">
-                <ul class="navbar-nav ms-auto text-lg-start">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#salgados">Salgados</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#secao-torta-salgada" role="button" data-bs-toggle="dropdown">
-                            Torta Salgada
-                        </a>
-                        <ul class="dropdown-menu bg-warning">
-                            <li><a class="dropdown-item d-flex align-items-center" href="#secao-torta-salgada" onclick="renderTortas('todos')">
-                                <i class="bi bi-grid-fill me-2"></i> Todos
-                            </a></li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#secao-torta-salgada" onclick="renderTortas('retangular')">
-                                <i class="bi bi-square-fill me-2"></i> Retangular
-                            </a></li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#secao-torta-salgada" onclick="renderTortas('redonda')">
-                                <i class="bi bi-circle-fill me-2"></i> Redonda
-                            </a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#sobre">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#galeria-fotos">Galeria de fotos</a>
-                    </li>
-                </ul>
+            <div class="nav-menu" id="navMenu">
+                <a href="#salgados" class="nav-link">Salgados</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-btn">
+                        Torta Salgada
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#secao-torta-salgada" onclick="filtrarTortas('todos')">Todos</a>
+                        <a href="#secao-torta-salgada" onclick="filtrarTortas('retangular')">Retangular</a>
+                        <a href="#secao-torta-salgada" onclick="filtrarTortas('redonda')">Redonda</a>
+                    </div>
+                </div>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#galeria-fotos" class="nav-link">Galeria</a>
             </div>
         </div>
     </nav>
 
     <!-- ================= HERO CAROUSEL ================= -->
-    <section id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="hero-slide d-flex align-items-center justify-content-center text-center"
-                     style="background-image: url('img/maxresdefault-2022-10-03T105917.680.jpg');">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-sm-11 col-md-8 col-lg-6">
-                                <div class="hero-text-glass p-4 p-md-5">
-                                    <h1 class="fw-bold mb-3 display-6 display-md-5 text-warning">Salgados Artesanais</h1>
-                                    <p class="lead mb-4">Qualidade e sabor em cada detalhe</p>
-                                    <a href="https://wa.me/5599999999999?text=Quero%20fazer%20um%20pedido" 
-                                       target="_blank" class="btn btn-success btn-lg w-100 w-md-auto">
-                                        Fazer Pedido
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+    <section class="hero-carousel" id="heroCarousel">
+        <div class="carousel-container">
+            <div class="carousel-slide active" style="background-image: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&h=600&fit=crop');">
+                <div class="hero-content">
+                    <div class="hero-text-glass">
+                        <h1>Salgados Artesanais</h1>
+                        <p>Qualidade e sabor em cada detalhe</p>
+                        <a href="https://wa.me/5521968061820?text=Quero%20fazer%20um%20pedido" target="_blank" class="btn btn-success">Fazer Pedido</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="hero-slide d-flex align-items-center justify-content-center text-center"
-                     style="background-image: url('img/IMG_20230507_080946173.jpg');">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-sm-11 col-md-8 col-lg-6">
-                                <div class="hero-text-glass p-4 p-md-5">
-                                    <h1 class="fw-bold mb-3 display-6 display-md-5 text-warning">Tortas Especiais</h1>
-                                    <p class="lead mb-4">Perfeitas para qualquer ocasião</p>
-                                    <a href="https://wa.me/5599999999999" 
-                                       class="btn btn-success btn-lg w-100 w-md-auto">
-                                        Peça Agora
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="carousel-slide" style="background-image: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&h=600&fit=crop');">
+                <div class="hero-content">
+                    <div class="hero-text-glass">
+                        <h1>Tortas Especiais</h1>
+                        <p>Perfeitas para qualquer ocasião</p>
+                        <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-success">Peça Agora</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <div class="hero-slide d-flex align-items-center justify-content-center text-center"
-                     style="background-image: url('img/WhatsApp Image 2024-03-24 at 20.21.25.jpeg');">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-sm-11 col-md-8 col-lg-6">
-                                <div class="hero-text-glass p-4 p-md-5">
-                                    <h1 class="fw-bold mb-3 display-6 display-md-5 text-warning">Entrega Rápida</h1>
-                                    <p class="lead mb-4">Receba no conforto da sua casa</p>
-                                    <a href="https://wa.me/5599999999999" 
-                                       class="btn btn-success btn-lg w-100 w-md-auto">
-                                        Comprar
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="carousel-slide" style="background-image: linear-gradient(135deg, rgba(255, 193, 7, 0.3), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&h=600&fit=crop');">
+                <div class="hero-content">
+                    <div class="hero-text-glass">
+                        <h1>Entrega Rápida</h1>
+                        <p>Receba no conforto da sua casa</p>
+                        <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-success">Comprar</a>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <!-- Controles do Carousel (adicionados) -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-        </button>
+        <button class="carousel-btn prev" onclick="mudarSlide(-1)">❮</button>
+        <button class="carousel-btn next" onclick="mudarSlide(1)">❯</button>
+        <div class="carousel-indicators" id="indicators"></div>
     </section>
 
     <!-- ================= SEÇÃO SALGADOS ================= -->
-   
-    <section class="secao-box-salgados container mb-5">
-        <div class="subtitulo d-flex justify-content-center align-items-center gap-2 py-5">
-
-
-            
-
-
-
-           
-
-            <h1 id="salgados" class="titulo-animado text-center text-warning mt-5 fs-3">
-                    🍽️ Nossos Salgados  
-                    <span class="d-block fs-5 text-light mt-1">
-                        <i class="bi bi-fire"></i> 👨‍🍳 Seleção especial
-                    </span>
-                </h1>
-
-
+    <section id="salgados" class="salgados-section">
+        <div class="container-nav">
+            <h1 class="titulo-animado">🍽️ Nossos Salgados</h1>
+            <p class="subtitle"><i class="bi bi-fire"></i> 👨‍🍳 Seleção especial</p>
+            <div class="cards-container" id="cardsContainer"></div>
         </div>
-        <div id="cards-container" class="row g-4"></div>
     </section>
 
-
- 
-
     <!-- Modal Salgados -->
-    <div class="modal fade" id="modalSalgados" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-4 overflow-hidden">
-                <div class="modal-header bg-dark position-relative">
-                    <h5 id="modalTituloSalgado" class="modal-title text-warning fw-bold w-100 text-center fs-4"></h5>
-                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-3" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center bg-dark text-light">
-                    <div class="img-box mb-3">
-                        <img id="modalImagemSalgado" src="" alt="Produto Salgado" class="img-fluid rounded">
-                    </div>
-                    <p id="modalDescricaoSalgado" class="fs-5 mb-3"></p>
-                    <h3 id="modalPrecoSalgado" class="text-warning fw-bold"></h3>
-                </div>
-            </div>
+    <div class="modal" id="modalSalgados">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalSalgados')">&times;</span>
+            <h2 id="modalTituloSalgado"></h2>
+            <img id="modalImagemSalgado" src="" alt="Produto">
+            <p id="modalDescricaoSalgado"></p>
+            <h3 id="modalPrecoSalgado"></h3>
+            <a id="btnWhatsSalgado" href="#" target="_blank" class="btn btn-success">Pedir no WhatsApp</a>
         </div>
     </div>
 
     <!-- ================= SEÇÃO TORTAS ================= -->
-    <section id="secao-torta-salgada" class="container py-5">
-        <h1 class="text-center text-warning mb-1">🥧 Nossas Tortas Salgadas de Pão de Forma</h1>
-        <h5 class="text-center text-white mb-4">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</h5>
+    <section id="secao-torta-salgada" class="tortas-section">
+        <div class="container-nav">
+            <h1 class="titulo-animado">🥧 Nossas Tortas Salgadas de Pão de Forma</h1>
+            <p class="subtitle">Reproduzimos os modelos exibidos ou fazemos conforme o gosto do cliente</p>
+            
+            <div class="whatsapp-cta">
+                <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
+            </div>
 
-        <div class="text-center mb-4">
-            <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-success">Chamar no WhatsApp</a>
-        </div>
+            <div class="filtros">
+                <button class="btn btn-outline-warning active" onclick="filtrarTortas('todos')">Todos</button>
+                <button class="btn btn-outline-warning" onclick="filtrarTortas('retangular')">Retangular</button>
+                <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
+            </div>
 
-        <div class="text-center mb-4">
-            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('todos')">Todos</button>
-            <button class="btn btn-outline-warning me-2" onclick="filtrarTortas('retangular')">Retangular</button>
-            <button class="btn btn-outline-warning" onclick="filtrarTortas('redonda')">Redonda</button>
-        </div>
+            <div class="cards-container" id="containerTortas"></div>
 
-        <div id="container-tortas" class="row g-3"></div>
-
-        <div class="subtitulo d-flex justify-content-center align-items-center py-5 gap-2">
-            <i class="bi bi-telephone-fill icone-telefone"></i>
-            <span class="texto-destaque fs-1">Peça já pelo zap</span>
-            <i class="bi bi-whatsapp icone-zap"></i>
+            <div class="cta-destaque">
+                <p>Peça já pelo zap</p>
+                <i class="bi bi-whatsapp"></i>
+            </div>
         </div>
     </section>
 
     <!-- Modal Torta -->
-    <div class="modal fade" id="modalTorta" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h5 id="modalTituloTorta" class="modal-title text-warning"></h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalImgTorta" class="img-fluid rounded mb-3" alt="Torta">
-                    <p id="modalDescTorta"></p>
-                    <h4 id="modalPrecoTorta" class="text-warning"></h4>
-                </div>
+    <div class="modal" id="modalTorta">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalTorta')">&times;</span>
+            <h2 id="modalTituloTorta"></h2>
+            <img id="modalImgTorta" src="" alt="Torta">
+            <p id="modalDescTorta"></p>
+            <h3 id="modalPrecoTorta"></h3>
+            <a id="btnWhatsTorta" href="#" target="_blank" class="btn btn-success">Pedir no WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- ================= SEÇÃO GALERIA ================= -->
+    <section id="galeria-fotos" class="galeria-section">
+        <div class="container-nav">
+            <h1 class="titulo-animado">📸 Galeria de Fotos</h1>
+            <div class="galeria-carousel">
+                <button class="carousel-btn prev" onclick="mudarGaleria(-1)">❮</button>
+                <div class="galeria-container" id="galeriaContainer"></div>
+                <button class="carousel-btn next" onclick="mudarGaleria(1)">❯</button>
             </div>
+            <div class="galeria-indicators" id="galeriaIndicators"></div>
+        </div>
+    </section>
+
+    <!-- Modal Galeria -->
+    <div class="modal" id="modalGaleria">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalGaleria')">&times;</span>
+            <img id="modalGaleriaImg" src="" alt="Foto">
+            <h2 id="modalGaleriaTitulo"></h2>
+            <p id="modalGaleriaDesc"></p>
         </div>
     </div>
 
     <!-- ================= SEÇÃO SOBRE ================= -->
-    <section id="sobre" class="sobre-section py-5">
-        <div class="container">
-            <div class="text-center mb-4">
-                <a class="logo-sobre navbar-brand d-inline-flex align-items-center justify-content-center" href="#">
-                    <span class="logo-text">Tudo</span>
-                    <i class="fa-solid fa-chart-pie text-warning mx-1"></i>
-                    <span class="logo-text">Torta</span>
-                </a>
-                <p class="text-muted mt-2">Qualidade, personalização e atendimento direto com o cliente</p>
-            </div>
-
-            <div class="row g-4">
-                <!-- Quem Somos -->
-                <div class="col-12 col-md-6">
-                    <div class="sobre-box h-100 text-center text-md-start">
-                        <i class="fa-solid fa-burger icon-top text-warning"></i>
-                        <h4 class="mb-3">Quem Somos</h4>
-                        <p>Produzimos tortas e salgados personalizados com foco total na qualidade e no sabor.</p>
-                        <p>Reproduzimos modelos exibidos ou criamos conforme o gosto do cliente.</p>
-                        <p class="destaque">Cada pedido é único e feito sob medida.</p>
-                    </div>
-                </div>
-
-                <!-- Contato -->
-                <div class="col-12 col-md-6 d-flex">
-                    <div class="sobre-box h-100 text-center w-100 d-flex flex-column justify-content-center align-items-center">
-                        <i class="fa-solid fa-headset icon-top text-warning mb-3"></i>
-                        <h4 class="mb-3">Contato</h4>
-                        <p class="mb-2">📍 Atendimento na sua região</p>
-                        <p class="mb-2">📞 (21) 96806-1820</p>
-                        <p class="mb-3">📧 chaversantos70@gmail.com</p>
-                        <a href="https://wa.me/5521968061820" target="_blank" class="btn btn-whatsapp px-4">
-                            Chamar no WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Instagram -->
-            <div class="container-instagram text-center py-4">
-                <p class="fw-bold mb-3">📸 Siga a <span class="text-warning">Tudo Torta</span> no Instagram</p>
-                <div class="box-instagram d-flex justify-content-center align-items-center gap-3 flex-wrap">
-                    <a href="https://instagram.com/tudotorta2021" target="_blank" class="insta-hover text-decoration-none d-flex align-items-center gap-2 px-3 py-3 rounded">
-                        <i class="bi bi-instagram fs-3"></i>
-                        <span class="fw-semibold">@tudotorta2021</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= GALERIA DE FOTOS ================= -->
-    <section id="galeria-fotos" class="galeria-fotos py-5">
-        <div class="container">
-            <div class="w-100 d-flex justify-content-center fs-1">
-                <a class="logo-galeria navbar-brand d-inline-flex align-items-center" href="#">
-                    <span class="logo-text">Tudo</span>
-                    <i class="fa-solid fa-chart-pie text-warning mx-1"></i>
-                    <span class="logo-text">Torta</span>
-                </a>
-            </div>
-            <p class="fs-3 text-center text-white">
-                <i class="bi bi-camera-fill text-warning"></i> Galeria de Fotos dos Nossos Trabalhos
+    <section id="sobre" class="sobre-section">
+        <div class="container-nav">
+            <h1 class="titulo-animado">Sobre Nós</h1>
+            <p class="sobre-texto">
+                Bem-vindo à <strong>TudoTorta</strong>! Somos uma empresa especializada em salgados artesanais e tortas salgadas de pão de forma, feitas com ingredientes de qualidade e muito carinho.
+            </p>
+            <p class="sobre-texto">
+                Nossos produtos são preparados com dedicação e atenção aos detalhes, garantindo sabor e qualidade em cada pedaço. Oferecemos uma variedade de opções para atender aos seus gostos e necessidades.
+            </p>
+            <p class="sobre-texto">
+                Seja para festas, eventos ou simplesmente para saborear um bom salgado, a TudoTorta está aqui para tornar seus momentos ainda mais especiais!
             </p>
 
-            <div class="swiper mySwiper py-5">
-                <div class="swiper-wrapper" id="swiper-wrapper">
-                    <!-- Cards gerados via JavaScript -->
+            <div class="diferenciais">
+                <div class="diferencial-card">
+                    <div class="icon">🎁</div>
+                    <h3>Qualidade</h3>
+                    <p>Ingredientes selecionados e preparação cuidadosa</p>
                 </div>
-                <div class="swiper-button-next text-warning"></div>
-                <div class="swiper-button-prev text-warning"></div>
-                <div class="swiper-pagination"></div>
+                <div class="diferencial-card">
+                    <div class="icon">⚡</div>
+                    <h3>Rapidez</h3>
+                    <p>Entrega rápida e eficiente para sua comodidade</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="icon">❤️</div>
+                    <h3>Dedicação</h3>
+                    <p>Feito com carinho para você e sua família</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal Padrão (usado pela galeria e tortas) -->
-    <div class="modal fade" id="modalPadrao" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content position-relative">
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
-                <div class="modal-body text-center">
-                    <div class="img-box">
-                        <img id="modalImg" src="" alt="Produto" class="img-fluid rounded">
-                    </div>
-                    <h5 id="modalTitulo" class="mt-3"></h5>
-                    <p id="modalDescricao"></p>
-                    <h4 id="modalPreco" class="text-warning"></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WhatsApp Flutuante -->
-    <a href="https://wa.me/5521968061820" class="whatsapp-float text-white" target="_blank">
-        <i class="bi bi-whatsapp"></i>
-    </a>
-
-    <!-- Botão Voltar ao Topo -->
-    <button id="btnTopo" class="btn btn-warning btn-topo shadow">
-        <i class="bi bi-arrow-up"></i>
-    </button>
-
     <!-- ================= FOOTER ================= -->
-    <footer class="footer text-white py-5 mt-auto">
-        <div class="container text-center">
-            <a class="logo-footer navbar-brand mx-auto" href="#">
-                Tudo<i class="fa-solid fa-chart-pie text-warning mx-1"></i>Torta
-            </a>
-            <p class="text-warning">Sabor e qualidade no seu pedido</p>
-
-            <!-- Redes Sociais -->
-            <div class="col-12 mb-4">
-                <h6 class="mb-3">Redes Sociais</h6>
-                <div class="d-flex justify-content-center gap-4">
-                    <a href="https://wa.me/5521968061820" class="social-icon"><i class="bi bi-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/tudotorta2021" class="social-icon"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+    <footer class="footer">
+        <div class="container-nav">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-marca">
+                        Tudo<i class="fa-solid fa-chart-pie text-primary mx-1"></i>Torta
+                    </div>
+                    <p>Salgados e tortas artesanais feitos com carinho</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#salgados">Salgados</a></li>
+                        <li><a href="#secao-torta-salgada">Tortas</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#galeria-fotos">Galeria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><a href="https://wa.me/5521968061820" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a></p>
+                    <p>(21) 96806-1820</p>
                 </div>
             </div>
-
-            <div class="col-12 mt-4">
-                <p class="small text-muted mb-0">
-                    © <span id="ano"></span> Tudo Torta - Todos os direitos reservados
-                </p>
+            <div class="footer-bottom">
+                <p>© <span id="ano"></span> TudoTorta. Todos os direitos reservados.</p>
+                <p>Feito com ❤️ para você</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="js/javascript.js"></script>
+    <!-- ================= BOTÕES FLUTUANTES ================= -->
+    <a href="https://wa.me/5521968061820" target="_blank" class="whatsapp-float" title="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <button class="btn-topo" id="btnTopo" title="Voltar ao topo">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script src="js\javascript.js"></script>
 </body>
 </html>
