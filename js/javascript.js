@@ -9,7 +9,7 @@ let currentGaleria = 0;
 // DADOS DOS PRODUTOS
 // =========================
 const produtos = [
-  { nome: "Coxinha", preco: 2.00, descricao: "Carne seca temperado\n(Unid 30g)", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
+  { nome: "Coxinha", preco: 2.00, descricao: "Carne seca temperado\n(Unid 30g)", imagem: "img/coxinha.webp" },
   { nome: "Coxinha", preco: 1.50, descricao: "Frango temperado\n(Unid 30g)", imagem: "img/coxinha-de-frango-jpeg.webp" },
   { nome: "Bolinha", preco: 1.50, descricao: "Queijo\n(Unid 30g)", imagem: "img/01-Bolinho-de-queijo.jpg" },
   { nome: "Pastel de Forno", preco: 2.50, descricao: "Frango\n(Unid 40g)", imagem: "img/maxresdefault-2022-10-03T105917.680.jpg" },
@@ -20,20 +20,85 @@ const produtos = [
 ];
 
 const tortas = [
-  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 100.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 10 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
-  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 200.00, descricao: "Cobertura Purê de Batata (30x40cm)\nServe até 30 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
-  { tipo: "retangular", nome: "Torta de Frango (Retangular)", preco: 250.00, descricao: "Cobertura Purê de Batata (20x40cm)\nServe até 40 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
-  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 100.00, descricao: "Cobertura Purê de Batata (25cm)\nServe até 12 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
-  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 150.00, descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" },
-  { tipo: "redonda", nome: "Torta de Frango (Redonda)", preco: 180.00, descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas", imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop" }
+  { 
+  tipo: "retangular", 
+  nome: "Torta de Frango (Retangular)", 
+  preco: 80.00, 
+  descricao: "Cobertura Purê de Batata (20x20cm)\nServe até 10 pessoas\nRende aproximadamente 8 a 12 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2024-03-24 at 20.36.30.jpeg" 
+},
+
+{ 
+  tipo: "retangular", 
+  nome: "Torta de Frango (Retangular)", 
+  preco: 200.00, 
+  descricao: "Cobertura Purê de Batata (30x40cm)\nServe até 25 pessoas\nRende aproximadamente 18 a 28 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2024-03-24 at 20.37.17 (2).jpeg" 
+},
+
+{ 
+  tipo: "retangular", 
+  nome: "Torta de Frango (Retangular)", 
+  preco: 250.00, 
+  descricao: "Cobertura Purê de Batata (40x50cm)\nServe até 40 pessoas\nRende aproximadamente 30 a 45 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2024-03-24 at 22.37.30.jpeg" 
+},
+
+{ 
+  tipo: "retangular", 
+  nome: "Torta de Frango (Retangular)", 
+  preco: 300.00, 
+  descricao: "Cobertura Purê de Batata (50x60cm)\nServe até 55 pessoas\nRende aproximadamente 45 a 65 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2025-07-21 at 13.36.02 (2).jpeg" 
+},
+  { 
+  tipo: "redonda", 
+  nome: "Torta de Frango (Redonda)", 
+  preco: 100.00, 
+  descricao: "Cobertura Purê de Batata (25cm)\nServe até 12 pessoas\nRende aproximadamente 10 a 16 fatias (cortes de festa)", 
+  imagem: "img/IMG_20200926_155340806.jpg" 
+},
+
+{ 
+  tipo: "redonda", 
+  nome: "Torta de Frango (Redonda)", 
+  preco: 150.00, 
+  descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas\nRende aproximadamente 16 a 24 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2024-03-24 at 20.37.30.jpeg" 
+},
+
+{ 
+  tipo: "redonda", 
+  nome: "Torta de Frango (Redonda)", 
+  preco: 180.00, 
+  descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas\nRende aproximadamente 24 a 36 fatias (cortes de festa)", 
+  imagem: "img/WhatsApp Image 2023-10-21 at 17.13.07 (1).jpeg" 
+},
 ];
 
 const fotosGaleria = [
-  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Torta Retangular", descricao: "Torta de três camadas de recheio com cobertura de purê de batata." },
-  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Torta Redonda", descricao: "Torta redonda de pão de forma com purê de batata." },
-  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com carne seca." },
-  { imagem: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=500&fit=crop", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com frango." }
+  { imagem: "img/WhatsApp Image 2024-03-24 at 20.37.17 (2).jpeg", alt: "Torta Retangular", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 22.37.30.jpeg", alt: "Torta Retangular", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/IMG_20230507_081014742.jpg", alt: "Torta Retangular ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 20.37.30.jpeg", alt: "Torta Redonda", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2023-10-21 at 17.13.07 (1).jpeg", alt: "Torta Redonda", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/IMG_20220921_162929284.jpg", alt: "Torta Redonda ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  {imagem: "img/WhatsApp Image 2023-04-30 at 15.29.51 (3) - Copia.jpeg", alt: "Torta Redonda", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/torta salgada.jpg", alt: "Torta Redonda", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 20.17.29.jpeg", alt: "Torta Redonda ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/318825-original.png", alt: "Pudim de Leite Condensado ", descricao: "calda de acuçar." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 19.51.44.jpeg", alt: "Torta Formato Coxinha ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/IMG_20200926_155340806.jpg", alt: "Torta Redonda ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 20.37.22 (3).jpeg", alt: "Torta Redonda ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/IMG_20201010_000821189.jpg", alt: "Torta Redonda ", descricao: "Pão de forma com cobertura de purê de batata e recheio de frango." },
+  { imagem: "img/WhatsApp Image 2024-03-24 at 20.10.41.jpeg", alt: "Pastel de Forno", descricao: "Pastel de forno recheado com carne seca ou frango." },
+  { imagem: "img/WhatsApp Image 2024-10-13 at 15.11.04 (1).jpeg", alt: "Coxinha", descricao: "Recheio de Frango ." },
+  { imagem: "img/WhatsApp Image 2023-10-17 at 17.15.41.jpeg", alt: "Torta de Abacaxí", descricao: "massa sabor Abacaxí." },
+  { imagem: "img/WhatsApp_Image_2024-01-03_at_22.18.25__1_-removebg-preview.png", alt: "Bolo de Chocolate", descricao: " Massa chocolate e recheio de Nutella com Ninho" },
+  { imagem: "img/sem fundo.png", alt: "Bolo de Banana", descricao: " Calda de acuçar e granulado" }
+  
 ];
+
 
 // =========================
 // RENDERIZAR SALGADOS
@@ -362,3 +427,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (index === 0) btn.classList.add("active");
   });
 });
+
