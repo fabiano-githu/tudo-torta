@@ -223,8 +223,9 @@ header {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  background: #25D366;
+  background: #0c0c0c;
   border: none;
+  line-height: 0%;
 }
 
 .menu-toggle span {
