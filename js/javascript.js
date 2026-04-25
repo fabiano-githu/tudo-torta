@@ -100,6 +100,8 @@ const fotosGaleria = [
 ];
 
 
+
+
 // =========================
 // RENDERIZAR SALGADOS
 // =========================
@@ -342,40 +344,22 @@ window.onclick = function(event) {
     document.body.style.overflow = "auto";
   }
 };
-
-// =========================
 // MENU MOBILE
-// =========================
-function inicializarMenuMobile() {
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      navMenu.classList.toggle("active");
-    });
+menuToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
 
-    // Fechar menu ao clicar em um link
-    document.querySelectorAll(".nav-link").forEach(link => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active");
-        navMenu.classList.remove("active");
-      });
-    });
+// DROPDOWN MOBILE
+const dropdownBtn = document.querySelector(".dropdown-btn");
+const dropdownMenu = document.querySelector(".dropdown-menu");
 
-    // Dropdown mobile
-    const dropdownBtn = document.querySelector(".dropdown-btn");
-    const navDropdown = document.querySelector(".nav-dropdown");
-
-    if (dropdownBtn && navDropdown) {
-      dropdownBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        navDropdown.classList.toggle("active");
-      });
-    }
-  }
-}
+dropdownBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  dropdownMenu.classList.toggle("active");
+});
 
 // =========================
 // BOTÃO VOLTAR AO TOPO
@@ -411,8 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
   autoCarousel();
 
   // Menu mobile
+ document.addEventListener("DOMContentLoaded", () => {
   inicializarMenuMobile();
-
+});
   // Botão topo
   inicializarBotaoTopo();
 
@@ -428,3 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}

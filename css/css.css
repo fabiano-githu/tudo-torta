@@ -27,6 +27,14 @@ body {
   overflow-x: hidden;
   line-height: 1.65;
   font-size: 16px;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* =========================
@@ -154,103 +162,116 @@ body {
 
 .nav-link:hover {
   color: var(--primary);
+ 
 }
+
+.nav-link,
+.dropdown-menu a {
+  text-decoration: none;
+}
+
+
+/* ===== DROPDOWN ESTÁVEL ===== */
 
 .nav-dropdown {
   position: relative;
+  padding-bottom: 8px; /* evita "buraco" do mouse */
 }
 
 .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--primary);
-  color: #000;
+  background:#000;
   border-radius: 8px;
-  padding: 0.5rem 0;
-  min-width: 180px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.nav-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  min-width: 140px;
+  display: none;
+  flex-direction: column;
+  margin-top: 0px;
+  z-index: 1000;
+ border: 1px solid rgba(255, 193, 7, 0.3);
 }
 
 .dropdown-menu a {
-  display: block;
-  padding: 0.75rem 1.5rem;
-  color: #000;
+  color: #ffffff;
+   padding: 6px 12px;   /* diminui espaço vertical */
+   line-height: 1.2;    /* deixa mais compacto */
   text-decoration: none;
-  transition: background 0.2s ease;
-  font-size: 0.95rem;
+  transition: 0.3s;
 }
 
 .dropdown-menu a:hover {
-  background: rgba(0, 0, 0, 0.1);
+  color: var(--primary);
+  background: rgba(236, 239, 243, 0.2);
 }
 
-/* Mobile Menu */
+
+/* DESKTOP: hover FIXO */
+@media (min-width: 769px) {
+  .nav-dropdown:hover .dropdown-menu {
+    display: flex;
+  }
+}
+
+/* MOBILE: usa clique */
+.dropdown-menu.active {
+  display: flex;
+}
+
+/* ===== BOTÃO MENU ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: #25D366;
+  border: none;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 4px 0;
+}
+
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
+
   .menu-toggle {
     display: flex;
   }
 
   .nav-menu {
     position: absolute;
-    top: 70px;
+    top: 100px;
     left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    background: #0e0c0c;
     flex-direction: column;
-    gap: 0;
-    padding: 1rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    align-items: center;
+    display: none;
+    padding: 20px 0;
   }
 
   .nav-menu.active {
-    max-height: 500px;
+    display: flex;
   }
 
-  .nav-link {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 4px;
-  }
+ /* MELHORA DO HOVER */
+.nav-dropdown {
+  position: relative;
+  padding-bottom: 10px; /* cria área de transição */
+  border-radius: 100px;
+}
 
-  .nav-link:hover {
-    background: rgba(255, 193, 7, 0.1);
-  }
-
-  .dropdown-menu {
-    position: static;
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-    overflow: hidden;
-    background: rgba(255, 193, 7, 0.1);
-    margin: 0;
-    transform: none;
-    transition: all 0.3s ease;
-  }
-
-  .nav-dropdown.active .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    max-height: 300px;
-  }
-
-  .dropdown-menu a {
-    padding: 0.5rem 1rem;
-    margin-left: 1rem;
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* cola no botão */
+  left: 0;
+  margin-top: 5px;
+}
+  .dropdown-menu.active {
+    display: flex;
   }
 }
 
@@ -422,6 +443,13 @@ body {
   }
 }
 
+
+@media (max-width: 768px) {
+  .card-custom {
+    max-width: 95%;
+    height: auto;
+  }
+}
 /* =========================
    CARDS - ALTURA PADRONIZADA
 ========================= */
@@ -442,7 +470,7 @@ body {
 .torta-card{  width: 100%;
   max-width: 360px;
   margin: 0 auto;
-  height: 600px;
+  height: 900px;
   background: var(--gray);
   border: 2.5px solid var(--primary);
   border-radius: 22px;
@@ -534,6 +562,27 @@ body {
   flex: 1;
   padding: 10px;
   font-size: 0.9rem;
+}
+
+/* =========================
+   CARDS MAIORES NO MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .card-custom,
+  .torta-card,
+  .galeria-card {
+    max-width: 95%;   /* ocupa mais espaço da tela */
+    height: auto;     /* altura se adapta ao conteúdo */
+  }
+
+  .card-custom img,
+  .torta-card img,
+  .galeria-card img {
+    height: 280px; /* imagem maior no mobile */
+  }
+
 }
 
 /* =========================
