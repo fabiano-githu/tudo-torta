@@ -1,14 +1,19 @@
 {
-  "name": "Seu App",
-  "short_name": "App",
-  "start_url": ".",
+  "name": "Tudo Torta",
+  "short_name": "Torta",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ff6600",
+  "background_color": "#000000",
+  "theme_color": "#ffc107",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "img/LOGO PNG 2.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/Logo para hamburgueria gourmet moderno amarelo e preto.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
