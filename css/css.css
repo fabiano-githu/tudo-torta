@@ -471,7 +471,7 @@ header {
 .torta-card{  width: 100%;
   max-width: 360px;
   margin: 0 auto;
-  height: 700px;
+  height: 600px;
   background: var(--gray);
   border: 2.5px solid var(--primary);
   border-radius: 22px;
@@ -604,6 +604,26 @@ header {
   .torta-card img,
   .galeria-card img {
     height: 280px; /* imagem maior no mobile */
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .card-custom,
+  .galeria-card {
+    height: 460px;
+  }
+
+  
+  .card-custom {
+    min-height: 550px;
+    height: auto;
+  }
+
+  .torta-card {
+    min-height: 550px;
+    height: auto;
   }
 
 }
