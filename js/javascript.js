@@ -23,7 +23,7 @@ const tortas = [
   { 
   tipo: "retangular", 
   nome: "Torta de Frango (Retangular)", 
-  preco: 80.00, 
+  preco: 100.00, 
   descricao: "Cobertura Purê de Batata (20x20cm)\nServe até 10 pessoas\nRende aproximadamente 8 a 12 fatias (cortes de festa)", 
   imagem: "img/WhatsApp Image 2024-03-24 at 20.36.30.jpeg" 
 },
@@ -54,7 +54,7 @@ const tortas = [
   { 
   tipo: "redonda", 
   nome: "Torta de Frango (Redonda)", 
-  preco: 100.00, 
+  preco: 150.00, 
   descricao: "Cobertura Purê de Batata (25cm)\nServe até 12 pessoas\nRende aproximadamente 10 a 16 fatias (cortes de festa)", 
   imagem: "img/IMG_20200926_155340806.jpg" 
 },
@@ -62,7 +62,7 @@ const tortas = [
 { 
   tipo: "redonda", 
   nome: "Torta de Frango (Redonda)", 
-  preco: 150.00, 
+  preco: 170.00, 
   descricao: "Cobertura Purê de Batata (35cm)\nServe até 20 pessoas\nRende aproximadamente 16 a 24 fatias (cortes de festa)", 
   imagem: "img/WhatsApp Image 2024-03-24 at 20.37.30.jpeg" 
 },
@@ -70,7 +70,7 @@ const tortas = [
 { 
   tipo: "redonda", 
   nome: "Torta de Frango (Redonda)", 
-  preco: 180.00, 
+  preco: 190.00, 
   descricao: "Cobertura Purê de Batata (45cm)\nServe até 30 pessoas\nRende aproximadamente 24 a 36 fatias (cortes de festa)", 
   imagem: "img/WhatsApp Image 2023-10-21 at 17.13.07 (1).jpeg" 
 },
