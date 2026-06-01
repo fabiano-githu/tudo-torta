@@ -13,7 +13,9 @@ const produtos = [
   { nome: "Coxinha", preco: 1.50, descricao: "Frango temperado\n(Unid 30g)", imagem: "img/coxinha-de-frango-jpeg.webp" },
   { nome: "Bolinha", preco: 1.50, descricao: "Queijo\n(Unid 30g)", imagem: "img/01-Bolinho-de-queijo.jpg" },
   { nome: "Pastel de Forno", preco: 2.50, descricao: "Frango\n(Unid 40g)", imagem: "img/maxresdefault-2022-10-03T105917.680.jpg" },
-  { nome: "Pastel de Forno", preco: 2.50, descricao: "Carne seca\n(Unid 40g)", imagem: "img/pastel-assado-de-carne-seca-e-requeijao-40306-350x230.jpg" },
+  { nome: "Pastel de Forno", preco: 3.50, descricao: "Carne seca\n(Unid 40g)", imagem: "img/pastel-assado-de-carne-seca-e-requeijao-40306-350x230.jpg" },
+  { nome: "Pastel de Forno", preco: 6.50, descricao: "Frango\n(Unid 130g)", imagem: "img/maxresdefault-2022-10-03T105917.680.jpg" },
+  { nome: "Pastel de Forno", preco: 6.00, descricao: "Carne seca\n(Unid 130g)", imagem: "img/pastel-assado-de-carne-seca-e-requeijao-40306-350x230.jpg" },
   { nome: "Esfirra", preco: 2.50, descricao: "Carne moída\n(Unid 40g)", imagem: "img/esfiha_de_carne_moída.jpg" },
   { nome: "Esfirra", preco: 1.50, descricao: "Frango\n(Unid 40g)", imagem: "img/hq720.jpg" },
   { nome: "Joelho", preco: 1.50, descricao: "Queijo e presunto\n(Unid 40g)", imagem: "img/71929-original.webp" }
